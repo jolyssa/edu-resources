@@ -8,7 +8,7 @@
         "level": "Intermediate",
         "author": "tsiege",
         "info": {
-          "category": "interview",
+          "category": "Career Development",
           "link": "https://github.com/tsiege/Tech-Interview-Cheat-Sheet",
           "published": "2019"
         }
@@ -21,7 +21,7 @@
         "level": "Everyone",
         "author": "ripienaar",
         "info": {
-          "category": "general skills",
+          "category": "General Skills",
           "link": "https://github.com/ripienaar/free-for-dev",
           "published": "2019"
         }
@@ -80,46 +80,41 @@
       },
       {
         "id": "7",
-        "type": "",
-        "description": "",
-        "level": "",
-        "author": "",
+        "title": "API Layer",
+        "type": "Website",
+        "description": "A collective list of free API's.",
+        "level": "Everyone",
+        "author": "public-apis",
         "info": {
-          "category": "",
-          "link": "",
-          "tags": "",
-          "published": "",
-          "rating": ""
+          "category": "Web Development",
+          "link": "https://apilayer.com/",
+          "published": "2017"
         }
       },
       {
         "id": "8",
-        "title": "",
-        "type": "",
-        "description": "",
-        "level": "",
-        "author": "",
+        "title": "JavaScript Algorithms and Data Structures",
+        "type": "Repository",
+        "description": "📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings",
+        "level": "Beginner",
+        "author": "trekhleb",
         "info": {
-          "category": "",
-          "link": "",
-          "tags": "",
-          "published": "",
-          "rating": ""
+          "category": "Data Structures and Algorithms",
+          "link": "https://github.com/trekhleb/javascript-algorithms",
+          "published": "2018"
         }
       },
       {
         "id": "9",
         "title": "",
         "type": "",
-        "description": "",
-        "level": "",
-        "author": "",
+        "description": "This is a practical guide that anyone can use to learn front-end. It outlines and discusses the practice of front-end engineering: how to learn it and what tools to use when practicing it. The purpose of writing this manual is twofold: first, to provide a professional resource including learning materials and development tools for potential and practicing front-end developers; second, the manual can be used by managers, CTOs, instructors, and headhunters as an insight into the practice of front-end development. The content of this manual supports web technologies (HTML, CSS, DOM, and JavaScript), and the solutions provided in the manual are directly built on these open technologies. The materials and discussions cited in the manual are the best or current problems that front-end developers need to face.",
+        "level": "Everyone",
+        "author": "dq",
         "info": {
-          "category": "",
-          "link": "",
-          "tags": "",
-          "published": "",
-          "rating": ""
+          "category": "Web Development",
+          "link": "https://github.com/dwqs/front-end-handbook",
+          "published": "2015"
         }
       }
     ]
