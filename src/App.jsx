@@ -16,7 +16,7 @@ const App = () => {
 //! Add Job
   const addJob = async (newJob) => {
     console.log(newJob)
-    const res = await fetch(`/api/jobs`, {
+    const res = await fetch(`/api/content`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ const App = () => {
   const deleteJob = async (id) => {
     console.log('deleted', id)
 
-    const res = await fetch(`/api/jobs/${id}`, {
+    const res = await fetch(`/api/content/${id}`, {
       method: 'DELETE',
     })
     return
@@ -39,7 +39,7 @@ const App = () => {
   // ! Update Job
   const updateJob = async (job) => {
     console.log(job)
-    const res = await fetch(`/api/jobs/${job.id}`, {
+    const res = await fetch(`/api/content/${content.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -56,9 +56,8 @@ const App = () => {
       <Route index element={<HomePage />} />
       <Route path='/content' element={<JobsPage />} />
       <Route path='/add-content' element={<AddJobPage addJobSubmit={addJob} />} />
-      <Route path='/edit-job/:id' element={<EditJobPage updateJobSubmit={updateJob}/>} loader={jobLoader} />
-      <Route path='/jobs/:id' element={<JobPage deleteJob={deleteJob} />} loader={jobLoader} />
-      {/* <Route path='*' element={<NotFoundPage />} /> */}
+      <Route path='/edit-content/:id' element={<EditJobPage updateJobSubmit={updateJob}/>} loader={jobLoader} />
+      <Route path='/content/:id' element={<JobPage deleteJob={deleteJob} />} loader={jobLoader} />
     </Route>
     )
   )
