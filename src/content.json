@@ -28,62 +28,54 @@
       },
       {
         "id": "3",
-        "title": "",
-        "type": "",
-        "description": "",
-        "level": "",
-        "author": "",
+        "title": "Tech Interview Handbook",
+        "type": "Website",
+        "description": "Tech Interview Handbook goes straight to the point and tells you the minimum you need to know to excel in your technical interviews. Having personally gone through the interviewing process, it was frustrating to have to find resources from everywhere to prepare for my technical interviews. This handbook contains the essence of technical interviewing I gathered over my last job hunt, which allowed me to clinch 9 offers out of 11 top Bay Area companies - Google, Airbnb, Palantir, Dropbox, Lyft, and some startups! A senior Netflix engineer used Tech Interview Handbook and got 7 offers from 7 companies with the top offer being $800k USD 🤯!",
+        "level": "Everyone",
+        "author": "Yangshun Tay",
         "info": {
-          "category": "",
-          "link": "",
-          "tags": "",
-          "published": "",
-          "rating": ""
+          "category": "Career Development",
+          "link": "https://www.techinterviewhandbook.org/",
+          "published": "N/A"
         }
       },
       {
         "id": "4",
-        "title": "",
-        "type": "",
-        "description": "",
-        "level": "",
-        "author": "",
+        "title": "Node.js Basics",
+        "type": "Website",
+        "description": "Node.js is an open-source server side runtime environment built on Chrome's V8 JavaScript engine. It provides an event driven, non-blocking (asynchronous) I/O and cross-platform runtime environment for building highly scalable server-side applications using JavaScript. Learn more about Node.js here!",
+        "level": "Beginner",
+        "author": "Pradeep Kumar",
         "info": {
-          "category": "",
-          "link": "",
-          "tags": "",
-          "published": "",
-          "rating": ""
+          "category": "Web Development",
+          "link": "https://learning-zone.github.io/nodejs-basics/",
+          "published": "2019"
         }
       },
       {
         "id": "5",
-        "title": "",
-        "type": "",
-        "description": "",
-        "level": "",
-        "author": "",
+        "title": "Flexbox Guide",
+        "type": "Website",
+        "description": "⚡ A Guide for the concept of Flexbox and responsive design. Simply set the attributes as you needed and copy the CSS code. 🎉",
+        "level": "Beginner",
+        "author": "Sourav Dey",
         "info": {
-          "category": "",
-          "link": "",
-          "tags": "",
-          "published": "",
-          "rating": ""
+          "category": "Web Development",
+          "link": "https://flexbox-guide-souravdey777.vercel.app/",
+          "published": "2020"
         }
       },
       {
         "id": "6",
-        "title": "",
-        "type": "",
-        "description": "",
-        "level": "",
-        "author": "",
+        "title": "Website Templates",
+        "type": "Repository",
+        "description": "Find the perfect website template for you in this list of over 150+ resources at your disposal.",
+        "level": "Everyone",
+        "author": "learning-zone",
         "info": {
-          "category": "",
-          "link": "",
-          "tags": "",
-          "published": "",
-          "rating": ""
+          "category": "Web Development",
+          "link": "https://github.com/learning-zone/website-templates",
+          "published": "2019"
         }
       },
       {
