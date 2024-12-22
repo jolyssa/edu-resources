@@ -28,7 +28,7 @@ const JobListing = ({ content }) => {
 
                 <button onClick={() => setShowFullDescription((prevState) => !prevState)} className="text-red-500 mb-5 hover:text-red-400 text-xs">{showFullDescription ? 'Less' : 'More'}</button>
 
-                <h3 className="text-red-500 mb-2">Made By: {content.author}</h3>
+                <h3 className="text-red-500 mb-2">Created By: {content.createdBy}</h3>
 
                 <div className="border border-gray-100 mb-5"></div>
 

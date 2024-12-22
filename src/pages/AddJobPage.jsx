@@ -4,13 +4,13 @@ import { toast } from "react-toastify"
 
 const AddJobPage = ({ addJobSubmit }) => {
     const [title, setTitle] = useState('')
-    const [type, setType] = useState('Full-Time')
-    const [level, setLevel] = useState('')
+    const [type, setType] = useState('Book')
+    const [level, setLevel] = useState('Beginner')
     const [description, setDescription] = useState('')
-    const [author, setAuthor] = useState('Under $50K')
-    const [category, setCategory] = useState('')
+    const [createdBy, setcreatedBy] = useState('')
+    const [category, setCategory] = useState('Web Development')
     const [link, setLink] = useState('')
-    const [published, setPublished] = useState('')
+    const [published, setPublished] = useState('N/A')
 
     const navigate = useNavigate()
 
@@ -22,7 +22,7 @@ const AddJobPage = ({ addJobSubmit }) => {
             type,
             level,
             description,
-            author,
+            createdBy,
             info: {
                 category,
                 link,
@@ -101,17 +101,17 @@ const AddJobPage = ({ addJobSubmit }) => {
 
                         <div className='mb-4'>
                             <label className='block text-gray-700 font-bold mb-2'>
-                                Author
+                                Created By
                             </label>
                             <input
                                 type='text'
-                                id='author'
-                                name='author'
+                                id='createdBy'
+                                name='createdBy'
                                 className='border rounded w-full py-2 px-3 mb-2'
-                                placeholder='Resource Author'
+                                placeholder='Who created this resource?'
                                 required
-                                value={author}
-                                onChange={(e) => setAuthor(e.target.value)}
+                                value={createdBy}
+                                onChange={(e) => setcreatedBy(e.target.value)}
                             />
                         </div>
 
@@ -119,16 +119,17 @@ const AddJobPage = ({ addJobSubmit }) => {
                             <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
                             >Resource Level</label>
                             <select
-                                id="location"
-                                name="location"
+                                id="level"
+                                name="level"
                                 className="border rounded w-full py-2 px-3"
                                 required
                                 value={level}
                                 onChange={(e) => setLevel(e.target.value)}
                             >
-                                <option value="beginner">Beginner</option>
-                                <option value="intermediate">Intermediate</option>
-                                <option value="advanced">Advanced</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                                <option value="Everyone">Everyone</option>
                             </select>
                         </div>
 
@@ -187,13 +188,13 @@ const AddJobPage = ({ addJobSubmit }) => {
                             <label
                                 htmlFor="contact_phone"
                                 className="block text-gray-700 font-bold mb-2"
-                            >Publishing Date</label>
+                            >Publishing Year</label>
                             <input
-                                type="date"
-                                id="contact_phone"
-                                name="contact_phone"
+                                type="number"
+                                id="published"
+                                name="published"
                                 className="border rounded w-full py-2 px-3"
-                                placeholder="Optional phone htmlFor applicants"
+                                placeholder="Enter the year this resource was initally published"
                                 value={published}
                                 onChange={(e) => setPublished(e.target.value)}
                             />

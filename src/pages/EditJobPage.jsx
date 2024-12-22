@@ -12,7 +12,7 @@ const EditJobPage = ({updateJobSubmit}) => {
     const [type, setType] = useState(content.type)
     const [level, setLevel] = useState(content.level)
     const [description, setDescription] = useState(content.description)
-    const [author, setAuthor] = useState(content.author)
+    const [createdBy, setCreatedBy] = useState(content.createdBy)
     const [category, setCategory] = useState(content.info.category)
     const [link, setLink] = useState(content.info.link)
     const [published, setPublished] = useState(content.info.published)
@@ -29,7 +29,7 @@ const EditJobPage = ({updateJobSubmit}) => {
             type,
             level,
             description,
-            author,
+            createdBy,
             info: {
                 category,
                 link,
@@ -38,6 +38,7 @@ const EditJobPage = ({updateJobSubmit}) => {
         }
         updateJobSubmit(updatedJob)
 
+        
         toast.success('Resource updated successfully!')
 
         return navigate(`/content/${id}`)
@@ -108,17 +109,17 @@ const EditJobPage = ({updateJobSubmit}) => {
 
                         <div className='mb-4'>
                             <label className='block text-gray-700 font-bold mb-2'>
-                                Author
+                                Created By
                             </label>
                             <input
                                 type='text'
-                                id='author'
-                                name='author'
+                                id='createdBy'
+                                name='createdBy'
                                 className='border rounded w-full py-2 px-3 mb-2'
-                                placeholder='Resource Author'
+                                placeholder='Who created this resource?'
                                 required
-                                value={author}
-                                onChange={(e) => setAuthor(e.target.value)}
+                                value={createdBy}
+                                onChange={(e) => setCreatedBy(e.target.value)}
                             />
                         </div>
 
@@ -133,9 +134,10 @@ const EditJobPage = ({updateJobSubmit}) => {
                                 value={level}
                                 onChange={(e) => setLevel(e.target.value)}
                             >
-                                <option value="beginner">Beginner</option>
-                                <option value="intermediate">Intermediate</option>
-                                <option value="advanced">Advanced</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                                <option value="Everyone">Everyone</option>
                             </select>
                         </div>
 
@@ -194,13 +196,13 @@ const EditJobPage = ({updateJobSubmit}) => {
                             <label
                                 htmlFor="contact_phone"
                                 className="block text-gray-700 font-bold mb-2"
-                            >Publishing Date</label>
+                            >Publishing Year</label>
                             <input
-                                type="date"
-                                id="contact_phone"
-                                name="contact_phone"
+                                type="number"
+                                id="published"
+                                name="published"
                                 className="border rounded w-full py-2 px-3"
-                                placeholder="Optional phone htmlFor applicants"
+                                placeholder="Enter the year this resource was initally published"
                                 value={published}
                                 onChange={(e) => setPublished(e.target.value)}
                             />
@@ -208,7 +210,7 @@ const EditJobPage = ({updateJobSubmit}) => {
 
                         <div>
                             <button
-                                className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+                                className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                                 type="submit"
                             >
                                 Update Content

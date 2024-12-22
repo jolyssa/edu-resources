@@ -11,12 +11,12 @@ const JobPage = ({deleteJob}) => {
     const content = useLoaderData()
 
 
-    const onDeleteClick = (jobId) => {
+    const onDeleteClick = (contentId) => {
         const confirm = window.confirm('Are you sure you want to delete this listing?')
 
         if(!confirm) return
 
-        deleteJob(jobId)
+        deleteJob(contentId)
 
         toast.success('Resource deleted successfully!')
 
@@ -64,9 +64,9 @@ const JobPage = ({deleteJob}) => {
                                     {content.description}
                                 </p>
 
-                                <h3 className="text-red-800 text-lg font-bold mb-2">Made By</h3>
+                                <h3 className="text-red-800 text-lg font-bold mb-2">Created By</h3>
 
-                                <p className="mb-4">{content.author}</p>
+                                <p className="mb-4">{content.createdBy}</p>
                             </div>
                         </main>
 
@@ -100,7 +100,7 @@ const JobPage = ({deleteJob}) => {
                                 <h3 className="text-2xl font-bold italic mb-6">Manage Content</h3>
                                 <Link
                                     to={`/edit-content/${content.id}`}
-                                    className="bg-lime-700 hover:bg-lime-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                                    className="bg-amber-400 hover:bg-amber-300 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                                 >Edit Content
                                 </Link>
                                 <button onClick={() => onDeleteClick(content.id)}

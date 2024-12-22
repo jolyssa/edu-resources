@@ -8,20 +8,16 @@ import EditJobPage from './pages/EditJobPage'
 // import NotFoundPage from './pages/NotFoundPage'
 
 
-// const router = createBrowserRouter([{ path: "/", element: <HomePage /> }]);
-
-
-
 const App = () => {
 //! Add Job
-  const addJob = async (newJob) => {
-    console.log(newJob)
+  const addJob = async (newContent) => {
+    console.log(newContent)
     const res = await fetch(`/api/content`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(newJob)
+      body: JSON.stringify(newContent)
     })
     return
   }
@@ -37,14 +33,14 @@ const App = () => {
   }
 
   // ! Update Job
-  const updateJob = async (job) => {
-    console.log(job)
+  const updateJob = async (content) => {
+    console.log(content)
     const res = await fetch(`/api/content/${content.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(job)
+      body: JSON.stringify(content)
     })
     return
   }
