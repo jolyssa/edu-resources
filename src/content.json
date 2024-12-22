@@ -15,10 +15,10 @@
     },
     {
       "id": "2",
-      "title": "free-for.dev",
+      "title": "Free For Dev",
       "type": "Repository",
-      "description": "Developers and Open Source creators now have many services offering free tiers, but finding them all takes time to make informed decisions. This is a list of software (SaaS, PaaS, IaaS, etc.) and other offerings with free developer tiers. The scope of this particular list is limited to things that infrastructure developers (System Administrator, DevOps Practitioners, etc.) are likely to find useful. We love all the free services out there, but it would be good to keep it on topic. It's a grey line sometimes, so this is opinionated; please don't feel offended if I don't accept your contribution. This list results from Pull Requests, reviews, ideas, and work done by 1600+ people. You can also help by sending Pull Requests to add more services or remove ones whose offerings have changed or been retired.",
       "level": "Everyone",
+      "description": "Developers and Open Source creators now have many services offering free tiers, but finding them all takes time to make informed decisions. This is a list of software (SaaS, PaaS, IaaS, etc.) and other offerings with free developer tiers. The scope of this particular list is limited to things that infrastructure developers (System Administrator, DevOps Practitioners, etc.) are likely to find useful. We love all the free services out there, but it would be good to keep it on topic. It's a grey line sometimes, so this is opinionated; please don't feel offended if I don't accept your contribution. This list results from Pull Requests, reviews, ideas, and work done by 1600+ people. You can also help by sending Pull Requests to add more services or remove ones whose offerings have changed or been retired.",
       "createdBy": "ripienaar",
       "info": {
         "category": "General Skills",
@@ -69,13 +69,13 @@
       "id": "6",
       "title": "Website Templates",
       "type": "Repository",
-      "description": "Find the perfect website template for you in this list of over 150+ resources at your disposal.",
       "level": "Everyone",
+      "description": "Find the perfect website template for you in this list of over 150+ resources at your disposal.",
       "createdBy": "learning-zone",
       "info": {
         "category": "Web Development",
         "link": "https://github.com/learning-zone/website-templates",
-        "published": "2019"
+        "published": "2018"
       }
     },
     {
