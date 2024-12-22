@@ -1,6 +1,5 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom'
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/edu-resources.png';
 
 const Navbar = () => {
 
@@ -8,7 +7,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="bg-indigo-700 border-b border-indigo-500">
+            <nav className="bg-red-500 border-b border-red-500">
                 <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                     <div className="flex h-20 items-center justify-between">
                         <div
@@ -17,12 +16,12 @@ const Navbar = () => {
                             {/* <!-- Logo --> */}
                             <NavLink className="flex flex-shrink-0 items-center mr-4" to="/">
                                 <img
-                                    className="h-10 w-auto"
+                                    className="h-16 w-auto"
                                     src={logo}
                                     alt="React Jobs"
                                 />
-                                <span className="hidden md:block text-white text-2xl font-bold ml-2">
-                                    React Jobs
+                                <span className="hidden md:block text-white text-2xl font-serif font-bold italic ml-2">
+                                    EDU RESOURCES
                                 </span>
                             </NavLink>
                             <div className="md:ml-auto">
@@ -32,12 +31,12 @@ const Navbar = () => {
                                         className={ linkClass }>Home
                                     </NavLink>
                                     <NavLink
-                                        to="/jobs"
-                                        className={ linkClass }>Jobs
+                                        to="/content"
+                                        className={ linkClass }>Content
                                     </NavLink>
                                     <NavLink
-                                        to="/add-job"
-                                        className={ linkClass }>Add Job
+                                        to="/add-content"
+                                        className={ linkClass }>Add Content
                                     </NavLink>
                                 </div>
                             </div>

@@ -30,7 +30,7 @@ const JobPage = ({deleteJob}) => {
                         to="/jobs"
                         className="text-indigo-500 hover:text-indigo-600 flex items-center"
                     >
-                        <FaArrowLeft className="mr-2"/> Back to Job Listings
+                        <FaArrowLeft className="mr-2"/> Back to All Content
                     </Link>
                 </div>
             </section>
@@ -96,16 +96,16 @@ const JobPage = ({deleteJob}) => {
 
                             {/* <!-- Manage --> */}
                             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                                <h3 className="text-xl font-bold mb-6">Manage Job</h3>
+                                <h3 className="text-xl font-bold mb-6">Manage Content</h3>
                                 <Link
                                     to={`/edit-job/${job.id}`}
                                     className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-                                >Edit Job
+                                >Edit Content
                                 </Link>
                                 <button onClick={() => onDeleteClick(job.id)}
                                     className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                                 >
-                                    Delete Job
+                                    Delete Content
                                 </button>
                             </div>
                         </aside>

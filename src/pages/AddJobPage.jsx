@@ -5,13 +5,12 @@ import { toast } from "react-toastify"
 const AddJobPage = ({ addJobSubmit }) => {
     const [title, setTitle] = useState('')
     const [type, setType] = useState('Full-Time')
-    const [location, setLocation] = useState('')
+    const [level, setLevel] = useState('')
     const [description, setDescription] = useState('')
-    const [salary, setSalary] = useState('Under $50K')
-    const [companyName, setCompanyName] = useState('')
-    const [companyDescription, setCompanyDescription] = useState('')
-    const [contactEmail, setContactEmail] = useState('')
-    const [contactPhone, setContactPhone] = useState('')
+    const [author, setAuthor] = useState('Under $50K')
+    const [category, setCategory] = useState('')
+    const [link, setLink] = useState('')
+    const [published, setPublished] = useState('')
 
     const navigate = useNavigate()
 
@@ -21,21 +20,20 @@ const AddJobPage = ({ addJobSubmit }) => {
         const newJob = {
             title,
             type,
-            location,
+            level,
             description,
-            salary,
-            company: {
-                name: companyName,
-                description: companyDescription,
-                contactEmail,
-                contactPhone
+            author,
+            info: {
+                category,
+                link,
+                published,
             }
         }
         addJobSubmit(newJob)
 
-        toast.success('Job added successfully!')
+        toast.success('Resource added successfully!')
 
-        return navigate('/jobs')
+        return navigate('/content')
     }
 
     return (
@@ -46,11 +44,11 @@ const AddJobPage = ({ addJobSubmit }) => {
                     className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
                 >
                     <form onSubmit={submitForm}>
-                        <h2 className="text-3xl text-center font-semibold mb-6">Add Job</h2>
+                        <h2 className="text-3xl text-center font-semibold mb-6">Add Content</h2>
 
                         <div className="mb-4">
                             <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
-                            >Job Type</label>
+                            >Resource Type</label>
                             <select
                                 id="type"
                                 name="type"
@@ -59,22 +57,27 @@ const AddJobPage = ({ addJobSubmit }) => {
                                 value={type}
                                 onChange={(e) => setType(e.target.value)}
                             >
-                                <option value="Full-Time">Full-Time</option>
-                                <option value="Part-Time">Part-Time</option>
-                                <option value="Remote">Remote</option>
-                                <option value="Internship">Internship</option>
+                                <option value="Book">Book</option>
+                                <option value="Repository">Repository</option>
+                                <option value="Video">Video</option>
+                                <option value="Website">Website</option>
+                                <option value="Bootcamp">Bootcamp</option>
+                                <option value="Youtube Channel">Youtube Channel</option>
+                                <option value="Course">Course</option>
+                                <option value="Community">Community</option>
+
                             </select>
                         </div>
 
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2"
-                            >Job Listing Name</label>
+                            >Resource Name</label>
                             <input
                                 type="text"
                                 id="title"
                                 name="title"
                                 className="border rounded w-full py-2 px-3 mb-2"
-                                placeholder="eg. Frontend Developer"
+                                placeholder="eg. JavaScript for Dummies"
                                 required
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
@@ -90,123 +93,118 @@ const AddJobPage = ({ addJobSubmit }) => {
                                 name="description"
                                 className="border rounded w-full py-2 px-3"
                                 rows="4"
-                                placeholder="Add any job duties, expectations, requirements, etc"
+                                placeholder="Briefly describe the resource"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                             ></textarea>
                         </div>
 
-                        <div className="mb-4">
-                            <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
-                            >Salary</label>
-                            <select
-                                id="salary"
-                                name="salary"
-                                className="border rounded w-full py-2 px-3"
-                                required
-                                value={salary}
-                                onChange={(e) => setSalary(e.target.value)}
-                            >
-                                <option value="Under $50K">Under $50K</option>
-                                <option value="$50K - 60K">$50K - $60K</option>
-                                <option value="$60K - 70K">$60K - $70K</option>
-                                <option value="$70K - 80K">$70K - $80K</option>
-                                <option value="$80K - 90K">$80K - $90K</option>
-                                <option value="$90K - 100K">$90K - $100K</option>
-                                <option value="$100K - 125K">$100K - $125K</option>
-                                <option value="$125K - 150K">$125K - $150K</option>
-                                <option value="$150K - 175K">$150K - $175K</option>
-                                <option value="$175K - 200K">$175K - $200K</option>
-                                <option value="Over $200K">Over $200K</option>
-                            </select>
-                        </div>
-
                         <div className='mb-4'>
                             <label className='block text-gray-700 font-bold mb-2'>
-                                Location
+                                Author
                             </label>
                             <input
                                 type='text'
-                                id='location'
-                                name='location'
+                                id='author'
+                                name='author'
                                 className='border rounded w-full py-2 px-3 mb-2'
-                                placeholder='Company Location'
+                                placeholder='Resource Author'
                                 required
-                                value={location}
-                                onChange={(e) => setLocation(e.target.value)}
+                                value={author}
+                                onChange={(e) => setAuthor(e.target.value)}
                             />
                         </div>
 
-                        <h3 className="text-2xl mb-5">Company Info</h3>
+                        <div className="mb-4">
+                            <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
+                            >Resource Level</label>
+                            <select
+                                id="location"
+                                name="location"
+                                className="border rounded w-full py-2 px-3"
+                                required
+                                value={level}
+                                onChange={(e) => setLevel(e.target.value)}
+                            >
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+
+                        <h3 className="text-2xl mb-5">Additional Resource Info</h3>
 
                         <div className="mb-4">
                             <label htmlFor="company" className="block text-gray-700 font-bold mb-2"
-                            >Company Name</label>
+                            >Resource Category</label>
+                            <select
+                                id="category"
+                                name="category"
+                                className="border rounded w-full py-2 px-3"
+                                required
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                            >
+                                <option value="Web Development">Web Development</option>
+                                <option value="Mobile Development">Mobile Development</option>
+                                <option value="Game Development">Game Development</option>
+                                <option value="Data Science">Data Science</option>
+                                <option value="Cloud Computing">Cloud Computing</option>
+                                <option value="DevOps">DevOps</option>
+                                <option value="Cybersecurity">Cybersecurity</option>
+                                <option value="Artifical Intelligence">Artifical Intelligence</option>
+                                <option value="Data Structures and Algorithms">Data Structures and Algorithms</option>
+                                <option value="Machine Learning">Machine Learning</option>
+                                <option value="Database Management">Database Management</option>
+                                <option value="Agile and Scrum">Agile and Scrum</option>
+                                <option value="Career Development">Career Development</option>
+                                <option value="General Skills">General Skills</option>
+                                <option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Product Management">Product Management</option>
+                                <option value="Blockchain and Cryptocurrencies">Blockchain and Cryptocurrencies</option>
+                                <option value="Design">Design</option>
+                                <option value="Networking">Networking</option>
+                                
+                            </select>
+                        </div>
+
+                        <div className="mb-4">
+                            <label htmlFor="company" className="block text-gray-700 font-bold mb-2"
+                            >Resource Link</label>
                             <input
                                 type="text"
-                                id="company"
-                                name="company"
+                                id="category"
+                                name="category"
                                 className="border rounded w-full py-2 px-3"
-                                placeholder="Company Name"
-                                value={companyName}
-                                onChange={(e) => setCompanyName(e.target.value)}
+                                placeholder="Resource Link"
+                                value={link}
+                                onChange={(e) => setLink(e.target.value)}
                             />
                         </div>
 
-                        <div className="mb-4">
-                            <label
-                                htmlFor="company_description"
-                                className="block text-gray-700 font-bold mb-2"
-                            >Company Description</label>
-                            <textarea
-                                id="company_description"
-                                name="company_description"
-                                className="border rounded w-full py-2 px-3"
-                                rows="4"
-                                placeholder="What does your company do?"
-                                value={companyDescription}
-                                onChange={(e) => setCompanyDescription(e.target.value)}
-                            ></textarea>
-                        </div>
-
-                        <div className="mb-4">
-                            <label
-                                htmlFor="contact_email"
-                                className="block text-gray-700 font-bold mb-2"
-                            >Contact Email</label>
-                            <input
-                                type="email"
-                                id="contact_email"
-                                name="contact_email"
-                                className="border rounded w-full py-2 px-3"
-                                placeholder="Email address htmlFor applicants"
-                                required
-                                value={contactEmail}
-                                onChange={(e) => setContactEmail(e.target.value)}
-                            />
-                        </div>
                         <div className="mb-4">
                             <label
                                 htmlFor="contact_phone"
                                 className="block text-gray-700 font-bold mb-2"
-                            >Contact Phone</label>
+                            >Publishing Date</label>
                             <input
-                                type="tel"
+                                type="date"
                                 id="contact_phone"
                                 name="contact_phone"
                                 className="border rounded w-full py-2 px-3"
                                 placeholder="Optional phone htmlFor applicants"
-                                value={contactPhone}
-                                onChange={(e) => setContactPhone(e.target.value)}
+                                value={published}
+                                onChange={(e) => setPublished(e.target.value)}
                             />
                         </div>
 
                         <div>
                             <button
-                                className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+                                className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                                 type="submit"
                             >
-                                Add Job
+                                Add Content
                             </button>
                         </div>
                     </form>

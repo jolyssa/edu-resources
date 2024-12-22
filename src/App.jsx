@@ -1,4 +1,3 @@
-import React from 'react'
 import {Route, createRoutesFromElements, createBrowserRouter, RouterProvider} from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/HomePage'
@@ -55,8 +54,8 @@ const App = () => {
     createRoutesFromElements(
     <Route path='/' element={<MainLayout />}>
       <Route index element={<HomePage />} />
-      <Route path='/jobs' element={<JobsPage />} />
-      <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} />
+      <Route path='/content' element={<JobsPage />} />
+      <Route path='/add-content' element={<AddJobPage addJobSubmit={addJob} />} />
       <Route path='/edit-job/:id' element={<EditJobPage updateJobSubmit={updateJob}/>} loader={jobLoader} />
       <Route path='/jobs/:id' element={<JobPage deleteJob={deleteJob} />} loader={jobLoader} />
       {/* <Route path='*' element={<NotFoundPage />} /> */}
