@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import JobListing from './JobListing'
 import Spinner from './Spinner'
+import ResourceListing from './ResourceListing'
 
-const JobListings = ({ isHome = false }) => {
+const ResourceListings = ({ isHome = false }) => {
     const [content, setContent] = useState([])
     const [loading, setLoading] = useState(true)
 
@@ -36,7 +36,7 @@ const JobListings = ({ isHome = false }) => {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {content.map((content) => (
-                            <JobListing key={content.id} content={content} />
+                            <ResourceListing key={content.id} content={content} />
                         ))}
                     </div>
                 )}
@@ -45,4 +45,4 @@ const JobListings = ({ isHome = false }) => {
     )
 }
 
-export default JobListings
+export default ResourceListings

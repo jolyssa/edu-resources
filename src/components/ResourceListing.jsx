@@ -3,7 +3,7 @@ import { SiLevelsdotfyi } from "react-icons/si"
 
 import { Link } from 'react-router-dom'
 
-const JobListing = ({ content }) => {
+const ResourceListing = ({ content }) => {
 
     const [showFullDescription, setShowFullDescription] = useState(false)
 
@@ -49,4 +49,4 @@ const JobListing = ({ content }) => {
     )
 }
 
-export default JobListing
+export default ResourceListing
