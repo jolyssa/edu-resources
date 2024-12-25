@@ -1,6 +1,6 @@
 import ResourceListings from '../components/ResourceListings'
 
-const JobsPage = () => {
+const ResourcesPage = () => {
   return (
     <section className="bg-blue-50 px-4 py-6">
         <ResourceListings />
@@ -8,4 +8,4 @@ const JobsPage = () => {
   )
 }
 
-export default JobsPage
+export default ResourcesPage

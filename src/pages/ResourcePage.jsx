@@ -4,7 +4,7 @@ import { SiLevelsdotfyi } from "react-icons/si"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
-const JobPage = ({deleteJob}) => {
+const ResourcePage = ({deleteJob}) => {
 
     const navigate = useNavigate()
     const { id } = useParams()
@@ -124,4 +124,4 @@ const jobLoader = async ({ params }) => {
 }
 
 
-export { JobPage as default, jobLoader }
+export { ResourcePage as default, jobLoader }

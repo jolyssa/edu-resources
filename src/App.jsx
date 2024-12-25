@@ -1,10 +1,10 @@
 import {Route, createRoutesFromElements, createBrowserRouter, RouterProvider} from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/HomePage'
-import JobsPage from './pages/JobsPage'
-import JobPage, {jobLoader} from './pages/JobPage'
-import AddJobPage from './pages/AddJobPage'
-import EditJobPage from './pages/EditJobPage'
+import ResourcesPage from './pages/ResourcesPage'
+import ResourcePage, {jobLoader} from './pages/ResourcePage'
+import AddResourcePage from './pages/AddResourcePage'
+import EditResourcePage from './pages/EditResourcePage'
 // import NotFoundPage from './pages/NotFoundPage'
 
 
@@ -50,10 +50,10 @@ const App = () => {
     createRoutesFromElements(
     <Route path='/' element={<MainLayout />}>
       <Route index element={<HomePage />} />
-      <Route path='/content' element={<JobsPage />} />
-      <Route path='/add-content' element={<AddJobPage addJobSubmit={addJob} />} />
-      <Route path='/edit-content/:id' element={<EditJobPage updateJobSubmit={updateJob}/>} loader={jobLoader} />
-      <Route path='/content/:id' element={<JobPage deleteJob={deleteJob} />} loader={jobLoader} />
+      <Route path='/content' element={<ResourcesPage />} />
+      <Route path='/add-content' element={<AddResourcePage addJobSubmit={addJob} />} />
+      <Route path='/edit-content/:id' element={<EditResourcePage updateJobSubmit={updateJob}/>} loader={jobLoader} />
+      <Route path='/content/:id' element={<ResourcePage deleteJob={deleteJob} />} loader={jobLoader} />
     </Route>
     )
   )

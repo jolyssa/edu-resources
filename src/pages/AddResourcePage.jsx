@@ -1,30 +1,23 @@
 import { useState } from "react"
-import { useLoaderData, useParams, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
-
-const EditJobPage = ({updateJobSubmit}) => {
-
-    
-    const content = useLoaderData()
-
-    const [title, setTitle] = useState(content.title)
-    const [type, setType] = useState(content.type)
-    const [level, setLevel] = useState(content.level)
-    const [description, setDescription] = useState(content.description)
-    const [createdBy, setCreatedBy] = useState(content.createdBy)
-    const [category, setCategory] = useState(content.info.category)
-    const [link, setLink] = useState(content.info.link)
-    const [published, setPublished] = useState(content.info.published)
+const AddResourcePage = ({ addJobSubmit }) => {
+    const [title, setTitle] = useState('')
+    const [type, setType] = useState('Book')
+    const [level, setLevel] = useState('Beginner')
+    const [description, setDescription] = useState('')
+    const [createdBy, setcreatedBy] = useState('')
+    const [category, setCategory] = useState('Web Development')
+    const [link, setLink] = useState('')
+    const [published, setPublished] = useState('N/A')
 
     const navigate = useNavigate()
-    const {id} = useParams()
 
     const submitForm = (e) => {
         e.preventDefault()
 
-        const updatedJob = {
-            id,
+        const newJob = {
             title,
             type,
             level,
@@ -36,23 +29,22 @@ const EditJobPage = ({updateJobSubmit}) => {
                 published,
             }
         }
-        updateJobSubmit(updatedJob)
+        addJobSubmit(newJob)
 
-        
-        toast.success('Resource updated successfully!')
+        toast.success('Resource added successfully!')
 
-        return navigate(`/content/${id}`)
+        return navigate('/content')
     }
 
-
     return (
+
         <section className="bg-indigo-50">
             <div className="container m-auto max-w-2xl py-24">
                 <div
                     className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
                 >
                     <form onSubmit={submitForm}>
-                        <h2 className="text-3xl text-center font-semibold mb-6">Update Content</h2>
+                        <h2 className="text-3xl text-center font-semibold mb-6">Add Content</h2>
 
                         <div className="mb-4">
                             <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
@@ -119,7 +111,7 @@ const EditJobPage = ({updateJobSubmit}) => {
                                 placeholder='Who created this resource?'
                                 required
                                 value={createdBy}
-                                onChange={(e) => setCreatedBy(e.target.value)}
+                                onChange={(e) => setcreatedBy(e.target.value)}
                             />
                         </div>
 
@@ -127,8 +119,8 @@ const EditJobPage = ({updateJobSubmit}) => {
                             <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
                             >Resource Level</label>
                             <select
-                                id="location"
-                                name="location"
+                                id="level"
+                                name="level"
                                 className="border rounded w-full py-2 px-3"
                                 required
                                 value={level}
@@ -213,14 +205,15 @@ const EditJobPage = ({updateJobSubmit}) => {
                                 className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                                 type="submit"
                             >
-                                Update Content
+                                Add Content
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
+
     )
 }
 
-export default EditJobPage
+export default AddResourcePage
