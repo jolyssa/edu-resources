@@ -1,4 +1,4 @@
-const Hero = ({ title = 'Your Coding Education Lives Here', subtitle = 'Explore the best resources, tutorials, and tools to level up your skills. Add content to share the wealth.'}) => {
+const Hero = ({ title = 'Your Coding Education Lives Here', subtitle = 'Explore the best resources, tutorials, and tools to level up your skills. Add a resource to share the wealth.'}) => {
     return (
         <>
             {/* <!-- Hero --> */}

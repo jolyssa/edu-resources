@@ -14,10 +14,10 @@ const HomeCards = () => {
                             Find the perfect coding resources to build your skills and shape your future
                         </p>
                         <Link
-                            to="/content"
+                            to="/resources"
                             className="inline-block bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700"
                         >
-                            Browse Content
+                            Browse Resources
                         </Link>
                     </Card>
 
@@ -27,10 +27,10 @@ const HomeCards = () => {
                             Share your educational resources and help learners discover valuable tools for their growth
                         </p>
                         <Link
-                            to="/add-content"
+                            to="/add-resources"
                             className="inline-block  bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700"
                         >
-                            Add Content
+                            Add Resources
                         </Link>
                     </Card>
                 </div>

@@ -33,7 +33,7 @@ const AddResourcePage = ({ addJobSubmit }) => {
 
         toast.success('Resource added successfully!')
 
-        return navigate('/content')
+        return navigate('/resources')
     }
 
     return (
@@ -44,7 +44,7 @@ const AddResourcePage = ({ addJobSubmit }) => {
                     className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
                 >
                     <form onSubmit={submitForm}>
-                        <h2 className="text-3xl text-center font-semibold mb-6">Add Content</h2>
+                        <h2 className="text-3xl text-center font-semibold mb-6">Add a Resource</h2>
 
                         <div className="mb-4">
                             <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
@@ -205,7 +205,7 @@ const AddResourcePage = ({ addJobSubmit }) => {
                                 className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                                 type="submit"
                             >
-                                Add Content
+                                Add Resource
                             </button>
                         </div>
                     </form>

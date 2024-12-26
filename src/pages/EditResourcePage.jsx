@@ -6,16 +6,16 @@ import { toast } from "react-toastify"
 const EditResourcePage = ({updateJobSubmit}) => {
 
     
-    const content = useLoaderData()
+    const resource = useLoaderData()
 
-    const [title, setTitle] = useState(content.title)
-    const [type, setType] = useState(content.type)
-    const [level, setLevel] = useState(content.level)
-    const [description, setDescription] = useState(content.description)
-    const [createdBy, setCreatedBy] = useState(content.createdBy)
-    const [category, setCategory] = useState(content.info.category)
-    const [link, setLink] = useState(content.info.link)
-    const [published, setPublished] = useState(content.info.published)
+    const [title, setTitle] = useState(resource.title)
+    const [type, setType] = useState(resource.type)
+    const [level, setLevel] = useState(resource.level)
+    const [description, setDescription] = useState(resource.description)
+    const [createdBy, setCreatedBy] = useState(resource.createdBy)
+    const [category, setCategory] = useState(resource.info.category)
+    const [link, setLink] = useState(resource.info.link)
+    const [published, setPublished] = useState(resource.info.published)
 
     const navigate = useNavigate()
     const {id} = useParams()
@@ -41,7 +41,7 @@ const EditResourcePage = ({updateJobSubmit}) => {
         
         toast.success('Resource updated successfully!')
 
-        return navigate(`/content/${id}`)
+        return navigate(`/resource/${id}`)
     }
 
 
@@ -52,7 +52,7 @@ const EditResourcePage = ({updateJobSubmit}) => {
                     className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
                 >
                     <form onSubmit={submitForm}>
-                        <h2 className="text-3xl text-center font-semibold mb-6">Update Content</h2>
+                        <h2 className="text-3xl text-center font-semibold mb-6">Update Resource</h2>
 
                         <div className="mb-4">
                             <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
@@ -213,7 +213,7 @@ const EditResourcePage = ({updateJobSubmit}) => {
                                 className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                                 type="submit"
                             >
-                                Update Content
+                                Update Resource
                             </button>
                         </div>
                     </form>

@@ -8,19 +8,19 @@ const ResourcePage = ({deleteJob}) => {
 
     const navigate = useNavigate()
     const { id } = useParams()
-    const content = useLoaderData()
+    const resource = useLoaderData()
 
-
-    const onDeleteClick = (contentId) => {
-        const confirm = window.confirm('Are you sure you want to delete this listing?')
+// ! ******* DELETE RESOURCE *******
+    const onDeleteClick = (resourceId) => {
+        const confirm = window.confirm('Are you sure you want to delete this resource?')
 
         if(!confirm) return
 
-        deleteJob(contentId)
+        deleteJob(resourceId)
 
         toast.success('Resource deleted successfully!')
 
-        navigate('/content')
+        navigate('/resources')
     }
 
     return (
@@ -28,10 +28,10 @@ const ResourcePage = ({deleteJob}) => {
             <section>
                 <div className="container m-auto py-6 px-6">
                     <Link
-                        to="/content"
+                        to="/resources"
                         className="text-red-500 hover:text-red-400 flex items-center"
                     >
-                        <FaArrowLeft className="mr-2"/> Back to All Content
+                        <FaArrowLeft className="mr-2"/> Back to All Resources
                     </Link>
                 </div>
             </section>
@@ -43,30 +43,30 @@ const ResourcePage = ({deleteJob}) => {
                             <div
                                 className="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
                             >
-                                <div className="text-gray-500 mb-4">{content.type}</div>
+                                <div className="text-gray-500 mb-4">{resource.type}</div>
                                 <h1 className="text-3xl font-bold mb-4">
-                                    {content.title}
+                                    {resource.title}
                                 </h1>
                                 <div
                                     className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
                                 >
                                     <SiLevelsdotfyi className="text-orange-700 mr-2 mt-1"/>
-                                    <p className="text-orange-700">{content.level}</p>
+                                    <p className="text-orange-700">{resource.level}</p>
                                 </div>
                             </div>
 
                             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
                                 <h3 className="text-red-800 text-lg font-bold mb-6">
-                                    Content Description
+                                    Resource Description
                                 </h3>
 
                                 <p className="mb-4">
-                                    {content.description}
+                                    {resource.description}
                                 </p>
 
                                 <h3 className="text-red-800 text-lg font-bold mb-2">Created By</h3>
 
-                                <p className="mb-4">{content.createdBy}</p>
+                                <p className="mb-4">{resource.createdBy}</p>
                             </div>
                         </main>
 
@@ -78,11 +78,11 @@ const ResourcePage = ({deleteJob}) => {
 
                                 <h3 className="text-xl font-bold">Category:</h3>
                                 <p className="mt-2 mb-4">
-                                    {content.info.category}
+                                    {resource.info.category}
                                 </p>
 
                                 <h3 className="text-xl font-bold">Link:</h3>
-                                <Link to={content.info.link} target="_blank" className="mt-2 mb-4 text-indigo-950"> {content.info.link}
+                                <Link to={resource.info.link} target="_blank" className="mt-2 mb-4 text-indigo-950"> {resource.info.link}
                                 </Link>
 
                                
@@ -91,22 +91,22 @@ const ResourcePage = ({deleteJob}) => {
 
                                 <h3 className="text-xl">Date Published:</h3>
                                 <p className="my-2 bg-indigo-100 p-2 font-bold rounded-md">
-                                    {content.info.published}
+                                    {resource.info.published}
                                 </p>
                             </div>
 
                             {/* <!-- Manage --> */}
                             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                                <h3 className="text-2xl font-bold italic mb-6">Manage Content</h3>
+                                <h3 className="text-2xl font-bold italic mb-6">Manage Resource</h3>
                                 <Link
-                                    to={`/edit-content/${content.id}`}
+                                    to={`/edit-resource/${resource.id}`}
                                     className="bg-amber-400 hover:bg-amber-300 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-                                >Edit Content
+                                >Edit Resource
                                 </Link>
-                                <button onClick={() => onDeleteClick(content.id)}
+                                <button onClick={() => onDeleteClick(resource.id)}
                                     className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                                 >
-                                    Delete Content
+                                    Delete Resource
                                 </button>
                             </div>
                         </aside>
@@ -118,7 +118,7 @@ const ResourcePage = ({deleteJob}) => {
 }
 
 const jobLoader = async ({ params }) => {
-    const res = await fetch(`/api/content/${params.id}`)
+    const res = await fetch(`/api/resources/${params.id}`)
     const data = await res.json()
     return data
 }

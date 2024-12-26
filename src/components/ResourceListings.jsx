@@ -3,17 +3,17 @@ import Spinner from './Spinner'
 import ResourceListing from './ResourceListing'
 
 const ResourceListings = ({ isHome = false }) => {
-    const [content, setContent] = useState([])
+    const [resources, setResource] = useState([])
     const [loading, setLoading] = useState(true)
 
     // fetching data
     useEffect(() => {
-        const fetchContent = async () => {
-            const apiUrl = isHome ? '/api/content?_limit=3' : '/api/content'
+        const fetchResource = async () => {
+            const apiUrl = isHome ? '/api/resources?_limit=3' : '/api/resources'
             try {
                 const res = await fetch(apiUrl)
                 const data = await res.json()
-                setContent(data)
+                setResource(data)
             } catch (err) {
                 console.error('Error fetching data', err)
             } finally {
@@ -21,7 +21,7 @@ const ResourceListings = ({ isHome = false }) => {
             }
         }
 
-        fetchContent()
+        fetchResource()
     }, [])
 
 
@@ -35,8 +35,8 @@ const ResourceListings = ({ isHome = false }) => {
                     <Spinner loading={loading} />
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {content.map((content) => (
-                            <ResourceListing key={content.id} content={content} />
+                        {resources.map((resources) => (
+                            <ResourceListing key={resources.id} resources={resources} />
                         ))}
                     </div>
                 )}
