@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
-const AddResourcePage = ({ addJobSubmit }) => {
+const AddResourcePage = ({ addResourceSubmit }) => {
     const [title, setTitle] = useState('')
     const [type, setType] = useState('Book')
     const [level, setLevel] = useState('Beginner')
@@ -17,7 +17,7 @@ const AddResourcePage = ({ addJobSubmit }) => {
     const submitForm = (e) => {
         e.preventDefault()
 
-        const newJob = {
+        const newResource = {
             title,
             type,
             level,
@@ -29,7 +29,7 @@ const AddResourcePage = ({ addJobSubmit }) => {
                 published,
             }
         }
-        addJobSubmit(newJob)
+        addResourceSubmit(newResource)
 
         toast.success('Resource added successfully!')
 

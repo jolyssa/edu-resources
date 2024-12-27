@@ -18,7 +18,7 @@ const Navbar = () => {
                                 <img
                                     className="h-16 w-auto"
                                     src={logo}
-                                    alt="React Jobs"
+                                    alt="Logo for Edu Resources"
                                 />
                                 <span className="hidden md:block text-white text-2xl font-serif font-bold italic ml-2">
                                     EDU RESOURCES

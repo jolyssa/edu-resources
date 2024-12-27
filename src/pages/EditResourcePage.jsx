@@ -3,7 +3,7 @@ import { useLoaderData, useParams, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
 
-const EditResourcePage = ({updateJobSubmit}) => {
+const EditResourcePage = ({updateResourceSubmit}) => {
 
     
     const resource = useLoaderData()
@@ -23,7 +23,7 @@ const EditResourcePage = ({updateJobSubmit}) => {
     const submitForm = (e) => {
         e.preventDefault()
 
-        const updatedJob = {
+        const updatedResource = {
             id,
             title,
             type,
@@ -36,7 +36,7 @@ const EditResourcePage = ({updateJobSubmit}) => {
                 published,
             }
         }
-        updateJobSubmit(updatedJob)
+        updateResourceSubmit(updatedResource)
 
         
         toast.success('Resource updated successfully!')

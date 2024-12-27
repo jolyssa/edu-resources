@@ -4,19 +4,21 @@ import { SiLevelsdotfyi } from "react-icons/si"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
-const ResourcePage = ({deleteJob}) => {
+// ! ********************************************* !
+// ! ******* DELETE RESOURCE *******
+// ! ********************************************* !
+const ResourcePage = ({deleteResource}) => {
 
     const navigate = useNavigate()
     const { id } = useParams()
     const resource = useLoaderData()
 
-// ! ******* DELETE RESOURCE *******
     const onDeleteClick = (resourceId) => {
         const confirm = window.confirm('Are you sure you want to delete this resource?')
 
         if(!confirm) return
 
-        deleteJob(resourceId)
+        deleteResource(resourceId)
 
         toast.success('Resource deleted successfully!')
 
@@ -117,11 +119,11 @@ const ResourcePage = ({deleteJob}) => {
     )
 }
 
-const jobLoader = async ({ params }) => {
+const resourceLoader = async ({ params }) => {
     const res = await fetch(`/api/resources/${params.id}`)
     const data = await res.json()
     return data
 }
 
 
-export { ResourcePage as default, jobLoader }
+export { ResourcePage as default, resourceLoader }

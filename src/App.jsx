@@ -2,15 +2,15 @@ import {Route, createRoutesFromElements, createBrowserRouter, RouterProvider} fr
 import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/HomePage'
 import ResourcesPage from './pages/ResourcesPage'
-import ResourcePage, {jobLoader} from './pages/ResourcePage'
+import ResourcePage, {resourceLoader} from './pages/ResourcePage'
 import AddResourcePage from './pages/AddResourcePage'
 import EditResourcePage from './pages/EditResourcePage'
 // import NotFoundPage from './pages/NotFoundPage'
 
 
 const App = () => {
-//! Add Job
-  const addJob = async (newResource) => {
+//! Add a Resource
+  const addResource = async (newResource) => {
     console.log(newResource)
     const res = await fetch(`/api/resources`, {
       method: 'POST',
@@ -22,8 +22,8 @@ const App = () => {
     return
   }
 
-  //! Delete Job
-  const deleteJob = async (id) => {
+  //! Delete a Resource
+  const deleteResource = async (id) => {
     console.log('deleted', id)
 
     const res = await fetch(`/api/resources/${id}`, {
@@ -32,8 +32,8 @@ const App = () => {
     return
   }
 
-  // ! Update Job
-  const updateJob = async (resource) => {
+  // ! Update a Resource
+  const updateResource = async (resource) => {
     console.log(resource)
     const res = await fetch(`/api/resources/${resource.id}`, {
       method: 'PUT',
@@ -51,9 +51,9 @@ const App = () => {
     <Route path='/' element={<MainLayout />}>
       <Route index element={<HomePage />} />
       <Route path='/resources' element={<ResourcesPage />} />
-      <Route path='/add-resources' element={<AddResourcePage addJobSubmit={addJob} />} />
-      <Route path='/edit-resource/:id' element={<EditResourcePage updateJobSubmit={updateJob}/>} loader={jobLoader} />
-      <Route path='/resource/:id' element={<ResourcePage deleteJob={deleteJob} />} loader={jobLoader} />
+      <Route path='/add-resources' element={<AddResourcePage addResourceSubmit={addResource} />} />
+      <Route path='/edit-resource/:id' element={<EditResourcePage updateResourceSubmit={updateResource}/>} loader={resourceLoader} />
+      <Route path='/resource/:id' element={<ResourcePage deleteResource={deleteResource} />} loader={resourceLoader} />
     </Route>
     )
   )
