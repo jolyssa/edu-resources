@@ -6,6 +6,8 @@ import ResourcePage, {resourceLoader} from './pages/ResourcePage'
 import AddResourcePage from './pages/AddResourcePage'
 import EditResourcePage from './pages/EditResourcePage'
 // import NotFoundPage from './pages/NotFoundPage'
+import NotFoundPage from './pages/NotFoundPage'
+
 
 
 const App = () => {
@@ -54,6 +56,7 @@ const App = () => {
       <Route path='/add-resources' element={<AddResourcePage addResourceSubmit={addResource} />} />
       <Route path='/edit-resource/:id' element={<EditResourcePage updateResourceSubmit={updateResource}/>} loader={resourceLoader} />
       <Route path='/resource/:id' element={<ResourcePage deleteResource={deleteResource} />} loader={resourceLoader} />
+      <Route path='*' element={<NotFoundPage />} />
     </Route>
     )
   )
