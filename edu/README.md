@@ -9,6 +9,10 @@ A platform for educators to share valuable coding tools, guides, and materials, 
 * **CRUD Functionality:** Add, edit, and remove resources to keep the library up to date.
 * **Search & Filter:** Easily search for resources based on categories, skill levels, and more.
 
+### Coming Soon
+* Authentication: Google Strategy
+* Users: You will have a profile and the ability to browse your resources!
+
 ## **Tech Stack**
 
 * **Frontend:** React.js
