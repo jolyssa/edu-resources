@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Roboto', 'sans-serif']
+        sans: ['Roboto', 'sans-serif'],
+        ibm: ['IBM Plex Mono', 'monospace'],
+        rm: ['Roboto Mono', 'monospace']
       },
       gridTemplateColumns: {
         '70/30': '70% 28%'

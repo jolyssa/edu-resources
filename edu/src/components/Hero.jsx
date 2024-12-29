@@ -8,7 +8,7 @@ const Hero = ({ title = 'Your Coding Education Lives Here', subtitle = 'Explore 
                 >
                     <div className="text-center">
                         <h1
-                            className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl"
+                            className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl italic"
                         >
                             { title }
                         </h1>

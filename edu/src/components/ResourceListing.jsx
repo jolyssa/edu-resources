@@ -15,7 +15,7 @@ const ResourceListing = ({ resources }) => {
 
 
     return (
-        <div className="bg-white rounded-xl shadow-md relative">
+        <div className="bg-white rounded-xl shadow-md hover:shadow-2xl transition duration-500 relative">
             <div className="p-4">
                 <div className="mb-6">
                     <div className="text-gray-600 my-2">{resources.type}</div>
@@ -26,9 +26,9 @@ const ResourceListing = ({ resources }) => {
                     {description}
                 </div>
 
-                <button onClick={() => setShowFullDescription((prevState) => !prevState)} className="text-red-500 mb-5 hover:text-red-400 text-xs">{showFullDescription ? 'Less' : 'More'}</button>
+                <button onClick={() => setShowFullDescription((prevState) => !prevState)} className="text-red-500 mb-5 hover:text-red-400 transition duration-200 text-xs">{showFullDescription ? 'See Less' : 'See More'}</button>
 
-                <h3 className="text-red-500 mb-2">Created By: {resources.createdBy}</h3>
+                <h3 className="text-red-500 mb-2 font-bold">Created By: <span className='font-normal'>{resources.createdBy}</span></h3>
 
                 <div className="border border-gray-100 mb-5"></div>
 
@@ -39,7 +39,7 @@ const ResourceListing = ({ resources }) => {
                     </div>
                     <Link
                         to={`/resource/${resources.id}`}
-                        className="h-[36px] bg-red-500 hover:bg-red-400 text-white px-4 py-2 rounded-lg text-center text-sm"
+                        className="h-[36px] bg-red-500 hover:bg-red-400 transition duration-300 text-white px-4 py-2 rounded-lg text-center text-sm"
                     >
                         Read More
                     </Link>
