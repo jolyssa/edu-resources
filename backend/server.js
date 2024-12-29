@@ -17,6 +17,15 @@ connectDB()
 //? App set to express()
 const app = express()
 
+//?CORS configuration
+app.use(cors({
+    origin: process.env.NODE_ENV === 'production' 
+      ? 'https://your-frontend-domain.com' 
+      : 'http://localhost:5173', // Vite's default port
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type']
+  }))
+
 //?Body parser middleware
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
