@@ -10,14 +10,15 @@ A platform for educators to share valuable coding tools, guides, and materials, 
 * **Search & Filter:** Easily search for resources based on categories, skill levels, and more.
 
 ### Coming Soon
+
 * Authentication: Google Strategy
 * Users: You will have a profile and the ability to browse your resources!
 
 ## **Tech Stack**
 
 * **Frontend:** React.js
-* **Backend:** JSON Server API
-* **Routing:** React Router DOM
+* **Backend:** **(New)** Node.js, Express, Mongoose, MongoDB **(Old)** JSON Server API
+* **Routing:** React Router DOM and Express Router
 * **State Management:** React `useState`
 * **Styling:** Tailwind CSS
 * **Dev Tools:** Vite, ESLint, PostCSS
@@ -71,15 +72,15 @@ npm install
 
 ### 3. Start the JSON Server (API)
 
-For development purposes, run the mock API with the following:
+For development purposes, run the API with the following:
 
-`npm run server`
+`node server.js --watch`
 
-The mock API should now be available at `http://localhost:8000`.
+The mock API should now be available at `http://localhost:5000/api/resources`.
 
 ### 4. Run the application
 
-Start the application locally:
+In another terminal window, start the application locally:
 
 `npm run dev`
 
