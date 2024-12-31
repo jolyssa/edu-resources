@@ -23,7 +23,7 @@ const ResourceListings = ({ isHome = false }) => {
             try {
                 const apiUrl = isHome 
                 ? `${VITE_BASE_URL}/resources?limit=6`
-                : `${VITE_BASE_URL}/resources`
+                : `${VITE_BASE_URL}/resources?page=${currentPage}&limit=${ITEMS_PER_PAGE}`
 
                 console.log('Fetching from:', apiUrl)
                 const res = await fetch(apiUrl,  {
@@ -50,7 +50,12 @@ const ResourceListings = ({ isHome = false }) => {
         }
 
         fetchResources()
-    }, [isHome])
+    }, [isHome, currentPage])
+
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage)
+        window.scrollTo(0, 0)
+      }
 
     if (error) return <div className="text-center text-red-500">{error}</div>
 
@@ -61,18 +66,47 @@ const ResourceListings = ({ isHome = false }) => {
                 <h2 className="text-3xl font-bold text-red-500 mb-6 text-center">
                     {isHome ? 'Recently Posted Resources' : 'Browse Resources'}
                 </h2>
+
                 {loading ? (
                     <Spinner loading={loading} />
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {resources.map((resources) => (
-                            <ResourceListing key={resources._id} resources={resources} />
-                        ))}
-                    </div>
-                )}
+                    <>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {resources.map((resources) => (
+                <ResourceListing key={resources._id} resources={resources} />
+              ))}
             </div>
-        </section>
-    )
-}
+
+            {!isHome && totalPages > 1 && (
+              <div className="flex justify-center items-center space-x-4 mt-8">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <ChevronLeft className="w-4 h-4 mr-1" />
+                  Previous
+                </button>
+                
+                <span className="text-sm text-gray-700">
+                  Page {currentPage} of {totalPages}
+                </span>
+                
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Next
+                  <ChevronRight className="w-4 h-4 ml-1" />
+                </button>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </section>
+  );
+};
 
 export default ResourceListings
