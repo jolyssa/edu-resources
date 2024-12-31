@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const resourceSchema = new mongoose.Schema({
   title: {
@@ -11,7 +11,7 @@ const resourceSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Type is required'],
     enum: {
-      values: ['Repository', 'Website', 'Book'],
+      values: ['Book','Repository', 'Video','Website', 'Bootcamp', 'Youtube Channel', 'Course', 'Community'],
       message: '{VALUE} is not a valid resource type'
     }
   },
@@ -46,11 +46,11 @@ const resourceSchema = new mongoose.Schema({
     },
     published: {
       type: String,
-      required: [true, 'Published date is required']
+      required: false
     }
   }
 }, {
   timestamps: true
-});
+})
 
-module.exports = mongoose.model('Resource', resourceSchema);
+module.exports = mongoose.model('Resource', resourceSchema)

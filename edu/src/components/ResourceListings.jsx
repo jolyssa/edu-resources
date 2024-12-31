@@ -14,7 +14,7 @@ const ResourceListings = ({ isHome = false }) => {
         const fetchResources = async () => {
             try {
                 const apiUrl = isHome 
-                ? `${VITE_BASE_URL}/resources?limit=3`
+                ? `${VITE_BASE_URL}/resources?limit=6`
                 : `${VITE_BASE_URL}/resources`
 
                 console.log('Fetching from:', apiUrl)
