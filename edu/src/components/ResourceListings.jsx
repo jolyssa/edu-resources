@@ -2,27 +2,49 @@ import { useState, useEffect } from 'react'
 import Spinner from './Spinner'
 import ResourceListing from './ResourceListing'
 
-const ResourceListings = ({ isHome = false }) => {
-    const [resources, setResource] = useState([])
-    const [loading, setLoading] = useState(true)
+const VITE_BASE_URL = import.meta.env.VITE_API_URL
 
-    // fetching data
+const ResourceListings = ({ isHome = false }) => {
+    const [resources, setResources] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+
+    //? fetching data
     useEffect(() => {
-        const fetchResource = async () => {
-            const apiUrl = isHome ? '/api/resources?_limit=3' : '/api/resources'
+        const fetchResources = async () => {
             try {
-                const res = await fetch(apiUrl)
+                const apiUrl = isHome 
+                ? `${VITE_BASE_URL}/resources?limit=3`
+                : `${VITE_BASE_URL}/resources`
+
+                console.log('Fetching from:', apiUrl)
+                const res = await fetch(apiUrl,  {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include'
+                })
+                
+                if (!res.ok) {
+                    throw new Error(`Failed to fetch resources. HTTP error! status: ${res.status}`)
+                }
+                
                 const data = await res.json()
-                setResource(data)
+                setResources(data)
             } catch (err) {
-                console.error('Error fetching data', err)
+                console.error('Error fetching data:', err)
+                setError(`Error fetching resources: ${err.message}`)
+
             } finally {
                 setLoading(false)
             }
         }
 
-        fetchResource()
-    }, [])
+        fetchResources()
+    }, [isHome])
+
+    if (error) return <div className="text-center text-red-500">{error}</div>
 
 
     return (
@@ -36,7 +58,7 @@ const ResourceListings = ({ isHome = false }) => {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {resources.map((resources) => (
-                            <ResourceListing key={resources.id} resources={resources} />
+                            <ResourceListing key={resources._id} resources={resources} />
                         ))}
                     </div>
                 )}

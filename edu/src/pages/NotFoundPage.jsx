@@ -4,7 +4,7 @@ const NotFoundPage = () => {
     return (
         <div className='notFoundDiv min-h-screen'>
 
-        <main className="bsod container notFound">
+        <main className="bsod container-nfp notFound">
             <h1 className="neg title"><span className="bg uppercase">Error — 404</span></h1>
             <p>An error has occured, to continue:</p>
             <p>* Return to the homepage.<br />

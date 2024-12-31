@@ -20,7 +20,7 @@ const EditResourcePage = ({updateResourceSubmit}) => {
     const navigate = useNavigate()
     const {id} = useParams()
 
-    const submitForm = (e) => {
+    const submitForm = async (e) => {
         e.preventDefault()
 
         const updatedResource = {
@@ -36,12 +36,20 @@ const EditResourcePage = ({updateResourceSubmit}) => {
                 published,
             }
         }
-        updateResourceSubmit(updatedResource)
 
-        
-        toast.success('Resource updated successfully!')
-
-        return navigate(`/resource/${id}`)
+        try {
+            await updateResourceSubmit(updatedResource)
+    
+            
+            toast.success('Resource updated successfully!')
+    
+            return navigate(`/resource/${id}`)
+           
+            
+        } catch (err) {
+            toast.error('Failed to edit resource')
+            console.error('Error editing resource: ', err)
+        }
     }
 
 

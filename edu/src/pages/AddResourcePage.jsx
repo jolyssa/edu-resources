@@ -14,7 +14,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
 
     const navigate = useNavigate()
 
-    const submitForm = (e) => {
+    const submitForm = async (e) => {
         e.preventDefault()
 
         const newResource = {
@@ -29,11 +29,17 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                 published,
             }
         }
-        addResourceSubmit(newResource)
 
-        toast.success('Resource added successfully!')
+    try {
+            await addResourceSubmit(newResource)
 
-        return navigate('/resources')
+            toast.success('Resource added successfully!')
+
+            return navigate('/resources')
+        } catch (err) {
+            toast.error('Failed to add resource')
+            console.error('Error adding resource: ', err)
+        }
     }
 
     return (
@@ -166,7 +172,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                                 <option value="Blockchain and Cryptocurrencies">Blockchain and Cryptocurrencies</option>
                                 <option value="Design">Design</option>
                                 <option value="Networking">Networking</option>
-                                
+
                             </select>
                         </div>
 
