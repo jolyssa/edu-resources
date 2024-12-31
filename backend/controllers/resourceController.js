@@ -1,14 +1,36 @@
 const Resource = require('../models/Resource')
 
 //? Get all resources
+// const getResources = async (req, res) => {
+//     try {
+//       const resources = await Resource.find()
+//       res.json(resources)
+//     } catch (error) {
+//       res.status(500).json({ message: error.message })
+//     }
+//   }
 const getResources = async (req, res) => {
-    try {
-      const resources = await Resource.find()
-      res.json(resources)
-    } catch (error) {
-      res.status(500).json({ message: error.message })
-    }
+  try {
+    const page = parseInt(req.query.page) || 1
+    const limit = parseInt(req.query.limit) || 50
+    const skip = (page - 1) * limit
+
+    const total = await Resource.countDocuments()
+    const resources = await Resource.find()
+      .skip(skip)
+      .limit(limit)
+      .sort({ createdAt: -1 })
+
+    res.json({
+      resources,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+      totalResources: total
+    })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
   }
+}
   
   //? Get single resource
   const getResource = async (req, res) => {
