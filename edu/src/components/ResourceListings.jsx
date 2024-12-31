@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
 import Spinner from './Spinner'
 import ResourceListing from './ResourceListing'
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+//? API URL
 const VITE_BASE_URL = import.meta.env.VITE_API_URL
 
 const ResourceListings = ({ isHome = false }) => {
     const [resources, setResources] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(0)
+
+    const location = useLocation()
+    const ITEMS_PER_PAGE = 50
 
     //? fetching data
     useEffect(() => {
