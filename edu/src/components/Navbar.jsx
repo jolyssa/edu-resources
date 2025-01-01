@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom'
-import logo from '../assets/images/edu-resources.png';
+import UserNav from './UserNav'
+import logo from '../assets/images/edu-resources.png'
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
 
     const linkClass = ({ isActive }) => isActive ? 'bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2' : 'text-white hover:bg-gray-900 transition duration-300 hover:text-white rounded-md px-3 py-2'
 
@@ -28,16 +29,26 @@ const Navbar = () => {
                                 <div className="flex space-x-2">
                                     <NavLink
                                         to="/"
-                                        className={ linkClass }>Home
+                                        className={linkClass}>Home
                                     </NavLink>
                                     <NavLink
                                         to="/resources"
-                                        className={ linkClass }>Resources
+                                        className={linkClass}>Resources
                                     </NavLink>
                                     <NavLink
                                         to="/add-resources"
-                                        className={ linkClass }>Add Resources
+                                        className={linkClass}>Add Resources
                                     </NavLink>
+                                    {user ? (
+                                        <UserNav user={user} onLogout={() => {/* handle logout */ }} />
+                                    ) : (
+                                        <button
+                                            onClick={() => {/* handle login */ }}
+                                            className="text-white hover:bg-red-600 px-4 py-2 rounded-md"
+                                        >
+                                            Sign In
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>

@@ -12,42 +12,9 @@ const VITE_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api
 
 
 const App = () => {
-// //! Add a Resource
-//   const addResource = async (newResource) => {
-//     console.log(newResource)
-//     const res = await fetch(`/api/resources`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(newResource)
-//     })
-//     return
-//   }
 
-//   //! Delete a Resource
-//   const deleteResource = async (id) => {
-//     console.log('deleted', id)
-
-//     const res = await fetch(`/api/resources/${_id}`, {
-//       method: 'DELETE',
-//     })
-//     return
-//   }
-
-//   // ! Update a Resource
-//   const updateResource = async (resource) => {
-//     console.log(resource)
-//     const res = await fetch(`/api/resources/${resource._id}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(resource)
-//     })
-//     return
-//   }
-
+//^RESOURCE FUNCTIONS
+//! Add a Resource
 const addResource = async (newResource) => {
   try {
     const res = await fetch(`${VITE_BASE_URL}/resources`, {
@@ -71,6 +38,7 @@ const addResource = async (newResource) => {
   }
 }
 
+//! Delete a Resource
 const deleteResource = async (id) => {
   try {
     const res = await fetch(`${VITE_BASE_URL}/resources/${id}`, {
@@ -88,6 +56,7 @@ const deleteResource = async (id) => {
   }
 }
 
+// ! Update a Resource
 const updateResource = async (resource) => {
   try {
     const res = await fetch(`${VITE_BASE_URL}/resources/${resource.id}`, {
@@ -109,6 +78,8 @@ const updateResource = async (resource) => {
   }
 }
 
+
+//^REACT ROUTER
   const router = createBrowserRouter(
     createRoutesFromElements(
     <Route path='/' element={<MainLayout />}>

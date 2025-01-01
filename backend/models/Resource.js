@@ -49,14 +49,10 @@ const resourceSchema = new mongoose.Schema({
       required: [false, 'Published date is required']
     }
   },
-  userId: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
-  },
-  isPrivate: {
-    type: Boolean,
-    default: false
   }
 }, {
   timestamps: true
