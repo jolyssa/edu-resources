@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 import Spinner from './Spinner'
 import ResourceListing from './ResourceListing'
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 //? API URL
 const VITE_BASE_URL = import.meta.env.VITE_API_URL
+
+// const location = useLocation()
+const ITEMS_PER_PAGE = 25
 
 const ResourceListings = ({ isHome = false }) => {
     const [resources, setResources] = useState([])
@@ -14,8 +17,7 @@ const ResourceListings = ({ isHome = false }) => {
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(0)
 
-    const location = useLocation()
-    const ITEMS_PER_PAGE = 50
+ 
 
     //? fetching data
     useEffect(() => {
@@ -39,7 +41,10 @@ const ResourceListings = ({ isHome = false }) => {
                 }
                 
                 const data = await res.json()
-                setResources(data)
+                console.log('Fetched data:', data.resources)
+                setResources(data.resources)
+                setTotalPages(data.totalPages)
+
             } catch (err) {
                 console.error('Error fetching data:', err)
                 setError(`Error fetching resources: ${err.message}`)
@@ -72,8 +77,8 @@ const ResourceListings = ({ isHome = false }) => {
                 ) : (
                     <>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {resources.map((resources) => (
-                <ResourceListing key={resources._id} resources={resources} />
+              {resources.map((resource) => (
+                <ResourceListing key={resource._id} resources={resource} />
               ))}
             </div>
 

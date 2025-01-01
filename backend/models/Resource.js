@@ -46,8 +46,17 @@ const resourceSchema = new mongoose.Schema({
     },
     published: {
       type: String,
-      required: false
+      required: [false, 'Published date is required']
     }
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  isPrivate: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true

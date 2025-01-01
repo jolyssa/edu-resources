@@ -12,7 +12,7 @@ const Resource = require('../models/Resource')
 const getResources = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1
-    const limit = parseInt(req.query.limit) || 50
+    const limit = parseInt(req.query.limit) || 25
     const skip = (page - 1) * limit
 
     const total = await Resource.countDocuments()
