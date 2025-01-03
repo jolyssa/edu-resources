@@ -2,9 +2,15 @@ import { NavLink } from 'react-router-dom'
 import UserNav from './UserNav'
 import logo from '../assets/images/edu-resources.png'
 
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL
+
 const Navbar = ({ user }) => {
 
     const linkClass = ({ isActive }) => isActive ? 'bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2' : 'text-white hover:bg-gray-900 transition duration-300 hover:text-white rounded-md px-3 py-2'
+
+    const handleGoogleSignIn = () => {
+        window.location.href = `${VITE_BASE_URL}auth/google`
+    }
 
     return (
         <>
@@ -21,8 +27,8 @@ const Navbar = ({ user }) => {
                                     src={logo}
                                     alt="Logo for Edu Resources"
                                 />
-                                <span className="hidden md:block text-white text-2xl font-serif font-bold italic ml-2">
-                                    EDU RESOURCES
+                                <span className="hidden md:block text-white text-3xl font-bold italic ml-4 uppercase">
+                                    Edu-Resources
                                 </span>
                             </NavLink>
                             <div className="md:ml-auto">
@@ -40,10 +46,10 @@ const Navbar = ({ user }) => {
                                         className={linkClass}>Add Resources
                                     </NavLink>
                                     {user ? (
-                                        <UserNav user={user} onLogout={() => {/* handle logout */ }} />
+                                        <UserNav />
                                     ) : (
                                         <button
-                                            onClick={() => {/* handle login */ }}
+                                            onClick={handleGoogleSignIn}
                                             className="text-white hover:bg-red-600 px-4 py-2 rounded-md"
                                         >
                                             Sign In

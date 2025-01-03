@@ -1,18 +1,10 @@
 const Resource = require('../models/Resource')
 
 //? Get all resources
-// const getResources = async (req, res) => {
-//     try {
-//       const resources = await Resource.find()
-//       res.json(resources)
-//     } catch (error) {
-//       res.status(500).json({ message: error.message })
-//     }
-//   }
 const getResources = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1
-    const limit = parseInt(req.query.limit) || 25
+    const limit = parseInt(req.query.limit) || 24
     const skip = (page - 1) * limit
 
     const total = await Resource.countDocuments()

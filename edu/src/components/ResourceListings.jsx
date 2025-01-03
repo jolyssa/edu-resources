@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 const VITE_BASE_URL = import.meta.env.VITE_API_URL
 
 // const location = useLocation()
-const ITEMS_PER_PAGE = 25
+const ITEMS_PER_PAGE = 24
 
 const ResourceListings = ({ isHome = false }) => {
     const [resources, setResources] = useState([])

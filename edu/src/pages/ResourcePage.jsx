@@ -5,6 +5,8 @@ import { MdModeEdit } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
+import { useAuth } from '../context/AuthContext'
+
 
 const VITE_BASE_URL = import.meta.env.VITE_API_URL
 
@@ -13,9 +15,11 @@ const VITE_BASE_URL = import.meta.env.VITE_API_URL
 // ! ********************************************* !
 const ResourcePage = ({ deleteResource }) => {
 
+    const { user } = useAuth()
     const navigate = useNavigate()
     const { id } = useParams()
     const resource = useLoaderData()
+    const isOwner = user && resource.user && user._id === resource.user._id
 
     const onDeleteClick = async (resourceId) => {
         const confirm = window.confirm('Are you sure you want to delete this resource?')
@@ -52,29 +56,31 @@ const ResourcePage = ({ deleteResource }) => {
                         <main>
                             <div className="relative">
                                 {/* Icon Container */}
+                                {isOwner && (
+                                    <div className="absolute top-4 right-6 text-center">
+                                        <p className="text-md text-gray-400 block mb-1">Manage</p>
+                                        <div className="flex space-x-2">
 
-                                <div className="absolute top-4 right-6 text-center">
-                                    <p className="text-md text-gray-400 block mb-1">Manage</p>
-                                    <div className="flex space-x-2">
+                                            <Link
+                                                to={`/edit-resource/${resource._id}`}>
+                                                <MdModeEdit
+                                                    className="text-gray-600 hover:text-amber-500 transition duration-200 text-2xl"
+                                                    onClick={() => console.log("Edit clicked")}
+                                                />
+                                            </Link>
+                                            <button onClick={() => onDeleteClick(resource._id)}
+                                                className=""
+                                            >
+                                                <AiFillDelete
+                                                    className="text-gray-600 hover:text-red-500 transition duration-200 text-2xl"
+                                                    onClick={() => console.log("Delete clicked")}
+                                                />
+                                            </button>
 
-                                        <Link
-                                            to={`/edit-resource/${resource._id}`}>
-                                            <MdModeEdit
-                                                className="text-gray-600 hover:text-amber-500 transition duration-200 text-2xl"
-                                                onClick={() => console.log("Edit clicked")}
-                                            />
-                                        </Link>
-                                        <button onClick={() => onDeleteClick(resource._id)}
-                                        className=""
-                                    >
-                                        <AiFillDelete
-                                            className="text-gray-600 hover:text-red-500 transition duration-200 text-2xl"
-                                            onClick={() => console.log("Delete clicked")}
-                                        />
-                                    </button>
-                                        
+                                        </div>
                                     </div>
-                                </div>
+                                )}
+                                
                                 <div
                                     className="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
                                 >

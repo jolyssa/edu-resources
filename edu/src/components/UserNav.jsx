@@ -1,63 +1,56 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { User, LogOut, Book, Settings, ChevronDown } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
+import { useAuthActions } from '../hooks/useAuthActions'
 
-const UserNav = ({ user, onLogout }) => {
+const UserNav = () => {
     const [isOpen, setIsOpen] = useState(false)
-  
+    const { user } = useAuth()
+    const { signOut } = useAuthActions()
+
     return (
-      <div className="relative">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center space-x-2 text-white hover:bg-red-600 px-3 py-2 rounded-md"
-        >
-          {user.avatar ? (
-            <img 
-              src={user.avatar} 
-              alt={user.displayName} 
-              className="w-8 h-8 rounded-full"
-            />
-          ) : (
-            <User className="w-8 h-8" />
-          )}
-          <span>{user.displayName}</span>
-          <ChevronDown className="w-4 h-4" />
-        </button>
-  
-        {isOpen && (
-          <div className="absolute right-0 mt-2 w-48 py-2 bg-white rounded-md shadow-xl z-50">
-            <Link
-              to="/my-resources"
-              className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100"
-              onClick={() => setIsOpen(false)}
-            >
-              <Book className="w-4 h-4 mr-2" />
-              My Resources
-            </Link>
-            
-            <Link
-              to="/profile"
-              className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100"
-              onClick={() => setIsOpen(false)}
-            >
-              <Settings className="w-4 h-4 mr-2" />
-              Profile Settings
-            </Link>
-            
+        <div className="relative">
             <button
-              onClick={() => {
-                onLogout()
-                setIsOpen(false)
-              }}
-              className="flex items-center w-full px-4 py-2 text-gray-800 hover:bg-gray-100"
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center space-x-2 text-white hover:bg-red-600 px-4 py-2 rounded-md"
             >
-              <LogOut className="w-4 h-4 mr-2" />
-              Sign Out
+                <img
+                    src={user?.avatar}
+                    alt="Profile"
+                    className="w-8 h-8 rounded-full"
+                />
+                <span>{user?.displayName}</span>
             </button>
-          </div>
-        )}
-      </div>
+
+            {isOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                    <Link
+                        to="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        My Profile
+                    </Link>
+                    <Link
+                        to="/my-resources"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        My Resources
+                    </Link>
+                    <button
+                        onClick={() => {
+                            signOut()
+                            setIsOpen(false)
+                        }}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                        Sign Out
+                    </button>
+                </div>
+            )}
+        </div>
     )
-  }
-  
-  export default UserNav
+}
+
+export default UserNav

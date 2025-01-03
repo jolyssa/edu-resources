@@ -4,17 +4,35 @@ const cors = require('cors')
 // const Resource = require('./models/Resource')
 const connectDB = require('./config/db')
 const resourceRoutes = require('./routes/resourceRoutes')
-// const resources  // your JSON data
+const authRoutes = require('./routes/auth')
+const passport = require('./config/passport')  
+const session = require('express-session')
 
 
 
 //?Load config file
 dotenv.config({ path: './config/.env' })
+
 //? Connect to our database
 connectDB()
 
 //? App set to express()
 const app = express()
+
+//?Body parser middleware
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
+//? Add session middleware before routes
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}))
+
+//? Initialize passport
+app.use(passport.initialize())
+app.use(passport.session())
 
 //?CORS configuration
 app.use(cors({
@@ -24,13 +42,9 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-//?Body parser middleware
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-
-
 //? Routes
-app.use('/api/resources', resourceRoutes);
+app.use('/api/resources', resourceRoutes)
+app.use('/auth', authRoutes) 
 
 // PORT
 const PORT = process.env.PORT || 3000
