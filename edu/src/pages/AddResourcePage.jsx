@@ -54,7 +54,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
 
                         <div className="mb-4">
                             <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
-                            >Resource Type</label>
+                            >Resource Type <span className="text-xs text-red-600"> *required</span></label>
                             <select
                                 id="type"
                                 name="type"
@@ -77,7 +77,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
 
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2"
-                            >Resource Name</label>
+                            >Resource Name <span className="text-xs text-red-600"> *required</span></label>
                             <input
                                 type="text"
                                 id="title"
@@ -93,7 +93,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                             <label
                                 htmlFor="description"
                                 className="block text-gray-700 font-bold mb-2"
-                            >Description</label>
+                            >Description <span className="text-xs text-red-600"> *required</span></label>
                             <textarea
                                 id="description"
                                 name="description"
@@ -107,7 +107,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
 
                         <div className='mb-4'>
                             <label className='block text-gray-700 font-bold mb-2'>
-                                Created By
+                                Created By <span className="text-xs text-red-600"> *required</span>
                             </label>
                             <input
                                 type='text'
@@ -123,7 +123,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
 
                         <div className="mb-4">
                             <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
-                            >Resource Level</label>
+                            >Resource Level <span className="text-xs text-red-600"> *required</span></label>
                             <select
                                 id="level"
                                 name="level"
@@ -143,7 +143,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
 
                         <div className="mb-4">
                             <label htmlFor="company" className="block text-gray-700 font-bold mb-2"
-                            >Resource Category</label>
+                            >Resource Category <span className="text-xs text-red-600"> *required</span></label>
                             <select
                                 id="category"
                                 name="category"
@@ -178,7 +178,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
 
                         <div className="mb-4">
                             <label htmlFor="company" className="block text-gray-700 font-bold mb-2"
-                            >Resource Link</label>
+                            >Resource Link <span className="text-xs text-red-600"> *required</span></label>
                             <input
                                 type="text"
                                 id="category"
@@ -194,7 +194,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                             <label
                                 htmlFor="contact_phone"
                                 className="block text-gray-700 font-bold mb-2"
-                            >Publishing Year</label>
+                            >Publishing Year <span className="text-xs text-gray-500"> (optional)</span></label>
                             <input
                                 type="number"
                                 id="published"
