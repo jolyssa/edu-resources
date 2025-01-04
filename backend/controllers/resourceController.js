@@ -56,16 +56,32 @@ const getResources = async (req, res) => {
   //? Update resource
   const updateResource = async (req, res) => {
     try {
-      const resource = await Resource.findByIdAndUpdate(
+      // First find the resource to check ownership
+    const resource = await Resource.findById(req.params.id)
+    
+    if (!resource) {
+      return res.status(404).json({ message: 'Resource not found' })
+    }
+
+    // Check if the authenticated user owns the resource
+    if (resource.user.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: 'Not authorised to update this resource' })
+    }
+
+
+    // If authorized, proceed with update
+      const updateResource = await Resource.findByIdAndUpdate(
         req.params.id,
         req.body,
         { new: true, runValidators: true }
       )
-      if (resource) {
-        res.json(resource)
+
+      if (updateResource) {
+        res.json(updateResource)
       } else {
         res.status(404).json({ message: 'Resource not found' })
       }
+      
     } catch (error) {
       if (error.name === 'ValidationError') {
         const errors = Object.values(error.errors).map(err => err.message)
