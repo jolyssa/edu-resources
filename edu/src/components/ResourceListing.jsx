@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { SiLevelsdotfyi } from "react-icons/si"
-
 import { Link } from 'react-router-dom'
 
 const ResourceListing = ({ resources }) => {
