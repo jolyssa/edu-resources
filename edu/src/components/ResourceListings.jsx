@@ -92,106 +92,115 @@ const ResourceListings = ({ isHome = false }) => {
   return (
     <>
 
-      {/* Filter Section */}
-      <div className="mb-8 bg-white p-4 rounded-lg shadow">
-        <h2 className="text-xl font-bold mb-4">Filter Resources</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label className="block text-gray-700 mb-2">Type</label>
-            <select
-              name="type"
-              value={filters.type}
-              onChange={handleFilterChange}
-              className="w-full p-2 border rounded"
-            >
-              <option value="">All Types</option>
-              {typeOptions.map(type => (
-                <option key={type} value={type}>{type}</option>
-              ))}
-            </select>
-          </div>
+      {/* Only show filters if not on home page */}
+      {!isHome && (
+        <div className="mx-28 mb-8  py-4 px-8 rounded-lg shadow  mt-8">
+          <h2 className="text-xl font-bold mb-4">Filter Resources</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-gray-700 mb-2">Type</label>
+              <select
+                name="type"
+                value={filters.type}
+                onChange={handleFilterChange}
+                className="w-full p-2 border rounded"
+              >
+                <option value="">All Types</option>
+                {typeOptions.map(type => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
+            </div>
 
-          <div>
-            <label className="block text-gray-700 mb-2">Level</label>
-            <select
-              name="level"
-              value={filters.level}
-              onChange={handleFilterChange}
-              className="w-full p-2 border rounded"
-            >
-              <option value="">All Levels</option>
-              {levelOptions.map(level => (
-                <option key={level} value={level}>{level}</option>
-              ))}
-            </select>
-          </div>
+            <div>
+              <label className="block text-gray-700 mb-2">Level</label>
+              <select
+                name="level"
+                value={filters.level}
+                onChange={handleFilterChange}
+                className="w-full p-2 border rounded"
+              >
+                <option value="">All Levels</option>
+                {levelOptions.map(level => (
+                  <option key={level} value={level}>{level}</option>
+                ))}
+              </select>
+            </div>
 
-          <div>
-            <label className="block text-gray-700 mb-2">Category</label>
-            <select
-              name="category"
-              value={filters.category}
-              onChange={handleFilterChange}
-              className="w-full p-2 border rounded"
+            <div>
+              <label className="block text-gray-700 mb-2">Category</label>
+              <select
+                name="category"
+                value={filters.category}
+                onChange={handleFilterChange}
+                className="w-full p-2 border rounded"
+              >
+                <option value="">All Categories</option>
+                {categoryOptions.map(category => (
+                  <option key={category} value={category}>{category}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="mt-4 flex justify-end gap-3">
+            <button
+              onClick={() => setFilters({ type: '', level: '', category: '' })}
+              className="px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-gray-200 transition duration-200"
             >
-              <option value="">All Categories</option>
-              {categoryOptions.map(category => (
-                <option key={category} value={category}>{category}</option>
-              ))}
-            </select>
+              Reset Filters
+            </button>
           </div>
         </div>
-        <button className=''>Filter</button>
-      </div>
+      )}
 
 
-        <section className="bg-red-50 px-4 py-10">
-          <div className="container-xl lg:container m-auto">
-            <h2 className="text-3xl font-bold text-red-500 mb-6 text-center">
-              {isHome ? 'Recently Posted Resources' : 'Browse Resources'}
-            </h2>
+      <section className="bg-red-50 px-4 py-10">
+        <div className="container-xl lg:container m-auto">
+          <h2 className="text-3xl font-bold text-red-500 mb-6 text-center">
+            {isHome ? 'Recently Posted Resources' : 'Browse Resources'}
+          </h2>
 
-            {loading ? (
-              <Spinner loading={loading} />
-            ) : (
-              <>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {resources.map((resource) => (
-                    <ResourceListing key={resource._id} resources={resource} />
-                  ))}
+          {loading ? (
+            <Spinner loading={loading} />
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {(!isHome ? filteredResources : resources).map((resource) => (
+                  <ResourceListing key={resource._id} resources={resource} />
+                ))}
+              </div>
+
+              {!isHome && totalPages > 1 && (
+                <div className="flex justify-center items-center space-x-4 mt-8">
+                  <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <ChevronLeft className="w-4 h-4 mr-1" />
+                    Previous
+                  </button>
+
+                  <span className="text-sm text-gray-700">
+                    Page {currentPage} of {totalPages}
+                  </span>
+
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Next
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </button>
                 </div>
-
-                {!isHome && totalPages > 1 && (
-                  <div className="flex justify-center items-center space-x-4 mt-8">
-                    <button
-                      onClick={() => handlePageChange(currentPage - 1)}
-                      disabled={currentPage === 1}
-                      className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      <ChevronLeft className="w-4 h-4 mr-1" />
-                      Previous
-                    </button>
-
-                    <span className="text-sm text-gray-700">
-                      Page {currentPage} of {totalPages}
-                    </span>
-
-                    <button
-                      onClick={() => handlePageChange(currentPage + 1)}
-                      disabled={currentPage === totalPages}
-                      className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      Next
-                      <ChevronRight className="w-4 h-4 ml-1" />
-                    </button>
-                  </div>
-                )}
-              </>
-            )}
-          </div>
-        </section>
-      </>
-      )
+              )}
+            </>
+          )}
+        </div>
+      </section>
+    </>
+  )
 }
 
-      export default ResourceListings
+export default ResourceListings
