@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 
-const VITE_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:5000'
 
 const AuthContext = createContext()
 
@@ -25,7 +25,12 @@ export const AuthProvider = ({ children }) => {
     }
 
     fetchUser()
+
+    
   }, [])
+
+
+
 
   return (
     <AuthContext.Provider value={{ user, loading, setUser }}>

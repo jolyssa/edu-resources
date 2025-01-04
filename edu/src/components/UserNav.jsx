@@ -19,7 +19,6 @@ const UserNav = () => {
                     alt="Profile"
                     className="w-8 h-8 rounded-full"
                 />
-                <span>{user?.displayName}</span>
             </button>
 
             {isOpen && (

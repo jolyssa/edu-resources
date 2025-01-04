@@ -12,28 +12,32 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:5000/auth/google/callback"
 },
     async function (accessToken, refreshToken, profile, cb) {
+
+        console.log("Access Token:", accessToken)
+        console.log("Refresh Token:", refreshToken)
+        console.log("Profile:", profile)
+
+        //? New user obj
+        const newUser = {
+            googleId: profile.id,
+            email: profile.emails[0].value,
+            displayName: profile.displayName,
+            firstName: profile.name.givenName,
+            lastName: profile.name.familyName || '',  // Making it optional
+            avatar: profile.photos[0].value
+        }
+
         try {
-
-            console.log("Access Token:", accessToken)
-            console.log("Refresh Token:", refreshToken) 
-            console.log("Profile:", profile)
-
-            // Check if user exists
+            //? Check if user exists
             let user = await User.findOne({ googleId: profile.id })
 
             if (!user) {
-                // Create new user if doesn't exist
-                user = await User.create({
-                    googleId: profile.id,
-                    email: profile.emails[0].value,
-                    displayName: profile.displayName,
-                    firstName: profile.name.givenName,
-                    lastName: profile.name.familyName || '',  // Making it optional
-                    avatar: profile.photos[0].value
-                })
+                //? Create new user if doesn't exist
+                user = await User.create(newUser)
             }
 
             return cb(null, user)
+            
         } catch (err) {
             return cb(err)
         }
