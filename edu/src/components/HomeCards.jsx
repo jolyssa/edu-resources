@@ -1,7 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 import Card from './Card'
 
 const HomeCards = () => {
+
+    const { user } = useAuth()
+    const navigate = useNavigate()
+
+    const handleAddResourceClick = (e) => {
+        if (!user) {
+            e.preventDefault()
+            navigate('/login')
+        }
+    }
+
     return (
 
         <section className="py-4 bg-red-50">
@@ -27,8 +39,9 @@ const HomeCards = () => {
                             Share your educational resources and help learners discover valuable tools for their growth
                         </p>
                         <Link
-                            to="/add-resources"
-                            className="inline-block  bg-red-400 text-white rounded-lg px-4 py-2 hover:bg-red-500 transition duration-300"
+                            to={user ? "/add-resources" : "/login"}
+                            onClick={handleAddResourceClick}
+                            className="inline-block bg-red-400 text-white rounded-lg px-4 py-2 hover:bg-red-500 transition duration-300"
                         >
                             Add Resources
                         </Link>
