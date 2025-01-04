@@ -39,7 +39,7 @@ const MyResourcesPage = () => {
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-8">My Resources</h1>
+            <h1 className="text-3xl font-bold text-red-500 mb-6 text-center">My Resources</h1>
 
             {resources.length === 0 ? (
                 <div className="text-center">
