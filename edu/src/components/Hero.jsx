@@ -2,7 +2,7 @@ const Hero = ({ title = 'Your Coding Education Lives Here', subtitle = 'Explore 
     return (
         <>
             {/* <!-- Hero --> */}
-            <section className="bg-red-500 py-20 mb-4">
+            <section className="bg-red-500 py-20 mb-4  lg:px-32 xl:px-96">
                 <div
                     className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center"
                 >
@@ -12,7 +12,7 @@ const Hero = ({ title = 'Your Coding Education Lives Here', subtitle = 'Explore 
                         >
                             { title }
                         </h1>
-                        <p className="my-4 text-xl text-white">
+                        <p className="mt-10 mb-4 text-xl text-white px-16">
                             { subtitle }
                         </p>
                     </div>

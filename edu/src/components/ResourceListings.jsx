@@ -11,107 +11,187 @@ const VITE_BASE_URL = import.meta.env.VITE_API_URL
 const ITEMS_PER_PAGE = 24
 
 const ResourceListings = ({ isHome = false }) => {
-    const [resources, setResources] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-    const [currentPage, setCurrentPage] = useState(1)
-    const [totalPages, setTotalPages] = useState(0)
+  const [resources, setResources] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+  const [filters, setFilters] = useState({
+    type: '',
+    level: '',
+    category: ''
+  })
 
- 
+  //? fetching data
+  useEffect(() => {
+    const fetchResources = async () => {
+      try {
+        const apiUrl = isHome
+          ? `${VITE_BASE_URL}/resources?limit=6`
+          : `${VITE_BASE_URL}/resources?page=${currentPage}&limit=${ITEMS_PER_PAGE}`
 
-    //? fetching data
-    useEffect(() => {
-        const fetchResources = async () => {
-            try {
-                const apiUrl = isHome 
-                ? `${VITE_BASE_URL}/resources?limit=6`
-                : `${VITE_BASE_URL}/resources?page=${currentPage}&limit=${ITEMS_PER_PAGE}`
+        console.log('Fetching from:', apiUrl)
+        const res = await fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include'
+        })
 
-                console.log('Fetching from:', apiUrl)
-                const res = await fetch(apiUrl,  {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    credentials: 'include'
-                })
-                
-                if (!res.ok) {
-                    throw new Error(`Failed to fetch resources. HTTP error! status: ${res.status}`)
-                }
-                
-                const data = await res.json()
-                console.log('Fetched data:', data.resources)
-                setResources(data.resources)
-                setTotalPages(data.totalPages)
-
-            } catch (err) {
-                console.error('Error fetching data:', err)
-                setError(`Error fetching resources: ${err.message}`)
-
-            } finally {
-                setLoading(false)
-            }
+        if (!res.ok) {
+          throw new Error(`Failed to fetch resources. HTTP error! status: ${res.status}`)
         }
 
-        fetchResources()
-    }, [isHome, currentPage])
+        const data = await res.json()
+        console.log('Fetched data:', data.resources)
+        setResources(data.resources)
+        setTotalPages(data.totalPages)
 
-    const handlePageChange = (newPage) => {
-        setCurrentPage(newPage)
-        window.scrollTo(0, 0)
+      } catch (err) {
+        console.error('Error fetching data:', err)
+        setError(`Error fetching resources: ${err.message}`)
+
+      } finally {
+        setLoading(false)
       }
+    }
 
-    if (error) return <div className="text-center text-red-500">{error}</div>
+    fetchResources()
+  }, [isHome, currentPage])
 
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage)
+    window.scrollTo(0, 0)
+  }
 
-    return (
-        <section className="bg-red-50 px-4 py-10">
-            <div className="container-xl lg:container m-auto">
-                <h2 className="text-3xl font-bold text-red-500 mb-6 text-center">
-                    {isHome ? 'Recently Posted Resources' : 'Browse Resources'}
-                </h2>
+  if (error) return <div className="text-center text-red-500">{error}</div>
 
-                {loading ? (
-                    <Spinner loading={loading} />
-                ) : (
-                    <>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {resources.map((resource) => (
-                <ResourceListing key={resource._id} resources={resource} />
+  //? Filtering based on type, level or category
+  const typeOptions = ['Book', 'Repository', 'Video', 'Website', 'Bootcamp', 'Youtube Channel', 'Course', 'Community']
+  const levelOptions = ['Beginner', 'Intermediate', 'Advanced', 'Everyone']
+  const categoryOptions = ['Web Development', 'Mobile Development', 'Game Development', 'Data Science', 'Cloud Computing', 'DevOps', 'Cybersecurity', 'Artifical Intelligence', 'Data Structures and Algorithms', 'Machine Learning', 'Database Management', 'Agile and Scrum', 'Career Development', 'General Skills',
+    'Business and Entrepreneurship',
+    'Marketing', 'Product Management', 'Blockchain and Cryptocurrencies', 'Design',
+    'Networking',]
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target
+    setFilters(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const filteredResources = resources.filter(resource => {
+    return (!filters.type || resource.type === filters.type) &&
+      (!filters.level || resource.level === filters.level) &&
+      (!filters.category || resource.info.category === filters.category)
+  })
+
+  return (
+    <>
+
+      {/* Filter Section */}
+      <div className="mb-8 bg-white p-4 rounded-lg shadow">
+        <h2 className="text-xl font-bold mb-4">Filter Resources</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label className="block text-gray-700 mb-2">Type</label>
+            <select
+              name="type"
+              value={filters.type}
+              onChange={handleFilterChange}
+              className="w-full p-2 border rounded"
+            >
+              <option value="">All Types</option>
+              {typeOptions.map(type => (
+                <option key={type} value={type}>{type}</option>
               ))}
-            </div>
+            </select>
+          </div>
 
-            {!isHome && totalPages > 1 && (
-              <div className="flex justify-center items-center space-x-4 mt-8">
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <ChevronLeft className="w-4 h-4 mr-1" />
-                  Previous
-                </button>
-                
-                <span className="text-sm text-gray-700">
-                  Page {currentPage} of {totalPages}
-                </span>
-                
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Next
-                  <ChevronRight className="w-4 h-4 ml-1" />
-                </button>
-              </div>
-            )}
-          </>
-        )}
+          <div>
+            <label className="block text-gray-700 mb-2">Level</label>
+            <select
+              name="level"
+              value={filters.level}
+              onChange={handleFilterChange}
+              className="w-full p-2 border rounded"
+            >
+              <option value="">All Levels</option>
+              {levelOptions.map(level => (
+                <option key={level} value={level}>{level}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 mb-2">Category</label>
+            <select
+              name="category"
+              value={filters.category}
+              onChange={handleFilterChange}
+              className="w-full p-2 border rounded"
+            >
+              <option value="">All Categories</option>
+              {categoryOptions.map(category => (
+                <option key={category} value={category}>{category}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <button className=''>Filter</button>
       </div>
-    </section>
-  );
-};
 
-export default ResourceListings
+
+        <section className="bg-red-50 px-4 py-10">
+          <div className="container-xl lg:container m-auto">
+            <h2 className="text-3xl font-bold text-red-500 mb-6 text-center">
+              {isHome ? 'Recently Posted Resources' : 'Browse Resources'}
+            </h2>
+
+            {loading ? (
+              <Spinner loading={loading} />
+            ) : (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {resources.map((resource) => (
+                    <ResourceListing key={resource._id} resources={resource} />
+                  ))}
+                </div>
+
+                {!isHome && totalPages > 1 && (
+                  <div className="flex justify-center items-center space-x-4 mt-8">
+                    <button
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <ChevronLeft className="w-4 h-4 mr-1" />
+                      Previous
+                    </button>
+
+                    <span className="text-sm text-gray-700">
+                      Page {currentPage} of {totalPages}
+                    </span>
+
+                    <button
+                      onClick={() => handlePageChange(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                      className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      Next
+                      <ChevronRight className="w-4 h-4 ml-1" />
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        </section>
+      </>
+      )
+}
+
+      export default ResourceListings

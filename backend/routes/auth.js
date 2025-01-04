@@ -14,7 +14,7 @@ router.get('/google',
 router.get('/google/callback', 
   passport.authenticate('google', { 
     failureRedirect: 'http://localhost:4444/login?success=false',
-    successRedirect: 'http://localhost:4444?success=true'
+    successRedirect: 'http://localhost:4444?success=true',
   })
 )
 
@@ -22,25 +22,17 @@ router.get('/google/callback',
 // @desc    Logout user
 // @route   /auth/logout
 router.get('/logout', (req, res) => {
-  req.logout()
-  res.redirect('/')
+  req.logout((err) => {
+      if (err) {
+          return next(err)
+      }
+      res.redirect('/')
+  })
 })
 
 // Get current user
 router.get('/current-user', (req, res) => {
   res.json(req.user || null)
-})
-
-// @desc    Logout user
-// @route   /auth/logout
-
-router.get('/logout', (req, res) => {
-    req.logout((err) => {
-        if (err) {
-            return next(err)
-        }
-        res.redirect('/')
-    })
 })
 
 module.exports = router

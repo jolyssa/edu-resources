@@ -1,5 +1,5 @@
 import { Route, createRoutesFromElements, createBrowserRouter, RouterProvider } from 'react-router-dom'
-// import { createResource, updateResource, deleteResource } from './api';
+import Login from './components/Login'
 import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/HomePage'
 import ResourcesPage from './pages/ResourcesPage'
@@ -92,6 +92,7 @@ const { user } = useAuth()
     createRoutesFromElements(
       <Route path='/' element={<MainLayout />}>
         <Route index element={<HomePage />} />
+        <Route path='/login' element={< Login />} />
         <Route path='/resources' element={<ResourcesPage />} />
         <Route path='/add-resources' element={<AddResourcePage addResourceSubmit={addResource} />} />
         <Route path='/edit-resource/:id' element={<EditResourcePage updateResourceSubmit={updateResource} />} loader={resourceLoader} />
