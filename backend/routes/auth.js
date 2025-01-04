@@ -13,8 +13,8 @@ router.get('/google',
 // @route   GET /auth/google/callback
 router.get('/google/callback', 
   passport.authenticate('google', { 
-    failureRedirect: 'localhost:4444/',
-    successRedirect: 'localhost:4444/'
+    failureRedirect: 'http://localhost:4444',
+    successRedirect: 'http://localhost:4444'
   })
 )
 

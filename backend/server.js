@@ -1,14 +1,11 @@
 const dotenv = require('dotenv')
 const express = require('express')
 const cors = require('cors')
-// const Resource = require('./models/Resource')
 const connectDB = require('./config/db')
 const resourceRoutes = require('./routes/resourceRoutes')
 const authRoutes = require('./routes/auth')
 const passport = require('./config/passport')  
 const session = require('express-session')
-
-
 
 //?Load config file
 dotenv.config({ path: './config/.env' })
