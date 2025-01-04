@@ -3,15 +3,9 @@ import UserNav from './UserNav'
 import logo from '../assets/images/edu-resources.png'
 import { useAuth } from '../context/AuthContext'
 
-const VITE_BASE_URL = import.meta.env.VITE_BASE_URL
-
 const Navbar = () => {
 
     const linkClass = ({ isActive }) => isActive ? 'bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2' : 'text-white hover:bg-gray-900 transition duration-300 hover:text-white rounded-md px-3 py-2'
-
-    const handleGoogleSignIn = () => {
-        window.location.href = `${VITE_BASE_URL}/auth/google`
-    }
 
     const { user } = useAuth()
 
@@ -55,12 +49,10 @@ const Navbar = () => {
                         {user ? (
                             <UserNav />
                         ) : (
-                            <button
-                                onClick={handleGoogleSignIn}
-                                className="text-white hover:bg-red-600 px-4 py-2 rounded-md"
+                            <NavLink to="/login" className="text-white hover:bg-red-600 px-4 py-2 rounded-md"
                             >
                                 Sign In
-                            </button>
+                            </NavLink>
                         )}
                     </div>
                 </div>
