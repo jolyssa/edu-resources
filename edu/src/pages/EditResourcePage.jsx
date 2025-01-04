@@ -1,12 +1,29 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useLoaderData, useParams, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
+import { useAuth } from '../context/AuthContext'
 
 
-const EditResourcePage = ({updateResourceSubmit}) => {
+const EditResourcePage = ({ updateResourceSubmit }) => {
 
-    
+
     const resource = useLoaderData()
+    const navigate = useNavigate()
+    const { id } = useParams()
+    const { user } = useAuth()
+
+    //? Verify ownership first
+    useEffect(() => {
+        //* Check if we have both user and resource data
+        if (user && resource) {
+            //* Verify if the current user is the resource owner
+            if (user._id !== resource.user) {
+                toast.error('Unauthorised: You can only edit your own resources')
+                navigate('/resources')
+                return
+            }
+        }
+    }, [user, resource, navigate])
 
     const [title, setTitle] = useState(resource.title)
     const [type, setType] = useState(resource.type)
@@ -17,11 +34,17 @@ const EditResourcePage = ({updateResourceSubmit}) => {
     const [link, setLink] = useState(resource.info.link)
     const [published, setPublished] = useState(resource.info.published)
 
-    const navigate = useNavigate()
-    const {id} = useParams()
+
 
     const submitForm = async (e) => {
         e.preventDefault()
+
+        //* Double-check authorisation before submitting
+        if (user._id !== resource.user) {
+            toast.error('Unauthorised: You can only edit your own resources')
+            navigate('/resources')
+            return
+        }
 
         const updatedResource = {
             id,
@@ -39,19 +62,27 @@ const EditResourcePage = ({updateResourceSubmit}) => {
 
         try {
             await updateResourceSubmit(updatedResource)
-    
-            
+
+
             toast.success('Resource updated successfully!')
-    
+
             return navigate(`/resource/${id}`)
-           
-            
+
+
         } catch (err) {
             toast.error('Failed to edit resource')
             console.error('Error editing resource: ', err)
         }
     }
 
+     //* Show loading state while verifying ownership
+     if (!user || !resource) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
+            </div>
+        )
+    }
 
     return (
         <section className="bg-indigo-50">
@@ -182,7 +213,7 @@ const EditResourcePage = ({updateResourceSubmit}) => {
                                 <option value="Blockchain and Cryptocurrencies">Blockchain and Cryptocurrencies</option>
                                 <option value="Design">Design</option>
                                 <option value="Networking">Networking</option>
-                                
+
                             </select>
                         </div>
 

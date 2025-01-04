@@ -19,6 +19,8 @@
 
 * [ ] Get new fav icon
 * [ ] Local passport integration
+* [ ] my resources, truncate text to 90 characters like on homepage
+* [ ] change categories list to tags so you can select (on filter) multiple, and resources can have multiple categories.
 
 ### FUTURE UPDATES:
 
