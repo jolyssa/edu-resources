@@ -34,4 +34,15 @@ router.route('/:id')
   .put(updateResource)
   .delete(deleteResource)
 
+//? Get resources for a specific user
+router.get('/user/:userId', async (req, res) => {
+  try {
+    const resources = await Resource.find({ user: req.params.userId })
+      .sort({ createdAt: -1 }) // Sort by newest first
+    res.json(resources)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
 module.exports = router

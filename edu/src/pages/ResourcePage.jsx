@@ -7,19 +7,19 @@ import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { useAuth } from '../context/AuthContext'
 
-
-const VITE_BASE_URL = import.meta.env.VITE_API_URL
+const VITE_API_URL = import.meta.env.VITE_API_URL
 
 // ! ********************************************* !
 // ! ******* DELETE RESOURCE *******
 // ! ********************************************* !
 const ResourcePage = ({ deleteResource }) => {
-
+    
     const { user } = useAuth()
     const navigate = useNavigate()
     const { id } = useParams()
     const resource = useLoaderData()
-    const isOwner = user && resource.user && user._id === resource.user._id
+    const isOwner = user && resource.user && user._id === resource.user
+
 
     const onDeleteClick = async (resourceId) => {
         const confirm = window.confirm('Are you sure you want to delete this resource?')
@@ -146,7 +146,7 @@ const ResourcePage = ({ deleteResource }) => {
 
 const resourceLoader = async ({ params }) => {
     try {
-        const res = await fetch(`${VITE_BASE_URL}/resources/${params.id}`)
+        const res = await fetch(`${VITE_API_URL}/resources/${params.id}`)
         if (!res.ok) {
             throw new Error('Failed to fetch resource')
         }

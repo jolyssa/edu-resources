@@ -7,23 +7,30 @@ import ResourcePage, { resourceLoader } from './pages/ResourcePage'
 import AddResourcePage from './pages/AddResourcePage'
 import EditResourcePage from './pages/EditResourcePage'
 import NotFoundPage from './pages/NotFoundPage'
-import { AuthProvider } from './context/AuthContext'
+import MyResourcesPage from './components/MyResourcesPage'
+import { useAuth } from './context/AuthContext'
 
-const VITE_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const VITE_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 
 const App = () => {
+
+const { user } = useAuth()
 
   //^RESOURCE FUNCTIONS
   //! Add a Resource
   const addResource = async (newResource) => {
     try {
-      const res = await fetch(`${VITE_BASE_URL}/resources`, {
+      const res = await fetch(`${VITE_API_URL}/resources`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(newResource)
+        credentials: 'include',
+        body: JSON.stringify({
+          ...newResource,
+          user: user._id
+        })
       })
 
       if (!res.ok) {
@@ -42,7 +49,7 @@ const App = () => {
   //! Delete a Resource
   const deleteResource = async (id) => {
     try {
-      const res = await fetch(`${VITE_BASE_URL}/resources/${id}`, {
+      const res = await fetch(`${VITE_API_URL}/resources/${id}`, {
         method: 'DELETE',
       });
 
@@ -60,7 +67,7 @@ const App = () => {
   // ! Update a Resource
   const updateResource = async (resource) => {
     try {
-      const res = await fetch(`${VITE_BASE_URL}/resources/${resource.id}`, {
+      const res = await fetch(`${VITE_API_URL}/resources/${resource.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -89,6 +96,7 @@ const App = () => {
         <Route path='/add-resources' element={<AddResourcePage addResourceSubmit={addResource} />} />
         <Route path='/edit-resource/:id' element={<EditResourcePage updateResourceSubmit={updateResource} />} loader={resourceLoader} />
         <Route path='/resource/:id' element={<ResourcePage deleteResource={deleteResource} />} loader={resourceLoader} />
+        <Route path='/my-resources' element={<MyResourcesPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Route>
     )
