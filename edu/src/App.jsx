@@ -1,4 +1,4 @@
-import { Route, createRoutesFromElements, createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Route, Routes,createRoutesFromElements, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './components/Login'
 import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/HomePage'
@@ -88,8 +88,8 @@ const App = () => {
   }
 
   //^REACT ROUTER
-  const router = createBrowserRouter(
-    createRoutesFromElements(
+  return (
+    <Routes>
       <Route path='/' element={<MainLayout />}>
 
         <Route index element={<HomePage />} />
@@ -129,12 +129,9 @@ const App = () => {
 
         <Route path='*' element={<NotFoundPage />} />
       </Route>
-    )
-  )
-
-  return (
-    <RouterProvider router={router} />
+    </Routes>
   )
 }
+
 
 export default App
