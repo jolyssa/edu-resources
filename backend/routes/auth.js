@@ -12,8 +12,8 @@ router.get('/google',
 // @route   GET /auth/google/callback
 router.get('/google/callback', 
   passport.authenticate('google', { 
-    failureRedirect: process.env.NODE_ENV === 'production' ? 'https://eduresources.site/login?success=false' : "http://localhost:4444/login?success=false",
-    successRedirect: process.env.NODE_ENV === 'production' ? 'https://eduresources.site?success=true' : 'http://localhost:4444?success=true' ,
+    failureRedirect:`${process.env.FRONTEND_URL}/login?success=false`,
+    successRedirect: `${process.env.FRONTEND_URL}?success=true`,
   })
 )
 

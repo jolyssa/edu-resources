@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     const fetchUser = async () => {
       try {
         const res = await fetch(`${VITE_BASE_URL}/auth/current-user`, {
-          credentials: 'include'
+          credentials: 'include',
         })
         const data = await res.json()
         setUser(data)
