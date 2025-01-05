@@ -5,14 +5,22 @@ const router = express.Router()
 // @desc    Auth with Google
 // @route   GET /auth/google
 router.get('/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
+  passport.authenticate('google', { 
+    scope: ['profile', 'email'],
+    callbackURL: process.env.NODE_ENV === 'production' 
+    ? "https://edu-resources-backend.onrender.com/auth/google/callback"
+    : "http://localhost:5000/auth/google/callback",
+  })
 )
 
 // @ desc   Google auth callback
 // @route   GET /auth/google/callback
 router.get('/google/callback', 
   passport.authenticate('google', { 
-    failureRedirect:`${process.env.FRONTEND_URL}/login?success=false`,
+    callbackURL: process.env.NODE_ENV === 'production' 
+      ? "https://edu-resources-backend.onrender.com/auth/google/callback"
+      : "http://localhost:5000/auth/google/callback",
+    failureRedirect: `${process.env.FRONTEND_URL}/login?success=false`,
     successRedirect: `${process.env.FRONTEND_URL}?success=true`,
   })
 )
