@@ -20,9 +20,19 @@
 * [ ] Change * to html entity
 * [ ] Change ' to html entity in my resources
 
+#### Mobile
+
+* [ ] Fix croll
+* [ ] fix nav (daiyui?)
+* [ ] fix filter
+
+#### Login
+
+* [ ] Now that it' deployed, ign in int working. fix.
+
 #### Legacy Resources
 
-* [ ] Import existing posts to Jj's account****
+* [X] Import existing posts to Jj's account****
 
 #### Misc
 
@@ -33,14 +43,16 @@
 
 #### Hosting
 
-* [ ] Change ALL links for localhost:5000
-* [ ] Change ALL links for localhost:4444
-* [ ] Change .env in backend and frontend -> VITE_API_URL and VITE_BASE_URL and PORT (backend)
-* [ ] Hosting backend separately or no ????? probably.
+* [X] Change ALL links for localhost:5000
+* [X] Change ALL links for localhost:4444
+* [X] Change .env in backend and frontend -> VITE_API_URL and VITE_BASE_URL and PORT (backend)
+* [X] Hosting backend separately or no ????? probably. YES
 
 ### FUTURE UPDATES:
 
 * [ ] People can create lists (like GitHub w/ stars, create a list and add resources to a list)
+* [ ] Resources can be public or private
+* [ ] fix filter to work with pagination
 
 ▸ 📂 convex         # Backend queries, mutations, and schema definitions
 ▸ 📂 public         # Images, favicons, and other unprocessed assets

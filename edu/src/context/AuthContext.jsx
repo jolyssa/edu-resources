@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL
-
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
@@ -23,14 +22,8 @@ export const AuthProvider = ({ children }) => {
         setLoading(false)
       }
     }
-
-    fetchUser()
-
-    
+    fetchUser()    
   }, [])
-
-
-
 
   return (
     <AuthContext.Provider value={{ user, loading, setUser }}>

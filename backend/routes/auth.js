@@ -2,7 +2,6 @@ const express = require('express')
 const passport = require('passport')
 const router = express.Router()
 
-
 // @desc    Auth with Google
 // @route   GET /auth/google
 router.get('/google',
@@ -13,11 +12,10 @@ router.get('/google',
 // @route   GET /auth/google/callback
 router.get('/google/callback', 
   passport.authenticate('google', { 
-    failureRedirect: 'https://edu-resources.pages.dev/login?success=false',
-    successRedirect: 'https://edu-resources.pages.dev?success=true',
+    failureRedirect: process.env.NODE_ENV === 'production' ? 'https://eduresources.site/login?success=false' : "http://localhost:4444/login?success=false",
+    successRedirect: process.env.NODE_ENV === 'production' ? 'https://eduresources.site?success=true' : 'http://localhost:4444?success=true' ,
   })
 )
-
 
 // @desc    Logout user
 // @route   /auth/logout

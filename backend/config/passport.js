@@ -2,7 +2,6 @@ const passport = require("passport")
 const GoogleStrategy = require("passport-google-oauth20").Strategy
 const User = require("../models/User.js")
 const dotenv = require("dotenv")
-
 dotenv.config({ path: './config/.env' })
 
 //?GOOGLE STRATEGY
@@ -14,7 +13,6 @@ passport.use(new GoogleStrategy({
     : "http://localhost:5000/auth/google/callback"
 },
     async function (accessToken, refreshToken, profile, cb) {
-
         console.log("Access Token:", accessToken)
         console.log("Refresh Token:", refreshToken)
         console.log("Profile:", profile)
