@@ -13,8 +13,8 @@ router.get('/google',
 // @route   GET /auth/google/callback
 router.get('/google/callback', 
   passport.authenticate('google', { 
-    failureRedirect: 'http://localhost:4444/login?success=false',
-    successRedirect: 'http://localhost:4444?success=true',
+    failureRedirect: 'https://edu-resources.pages.dev/login?success=false',
+    successRedirect: 'https://edu-resources.pages.dev?success=true',
   })
 )
 
