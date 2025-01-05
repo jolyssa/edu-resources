@@ -43,7 +43,7 @@ const MyResourcesPage = () => {
 
             {resources.length === 0 ? (
                 <div className="text-center">
-                    <p className="mb-4">You haven&apos;t added any resources yet.</p>
+                    <p className="mb-4">You haven't added any resources yet.</p>
                     <Link
                         to="/add-resources"
                         className="inline-block bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"

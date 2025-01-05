@@ -33,11 +33,11 @@ app.use(passport.session())
 
 //?CORS configuration
 app.use(cors({
-  origin: ['http://localhost:4444', 'http://localhost:5173'], // Allow both ports
+  origin: ['http://localhost:4444', 'http://localhost:5173', 'https://edu-resources.pages.dev'], // Allow these sites
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
-}));
+}))
 
 //? Routes
 app.use('/api/resources', resourceRoutes)

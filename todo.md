@@ -16,7 +16,7 @@
 #### Add / Edit Page
 
 * [X] Add optional and required fields (add)
-* [ ] Add optional and required fields (edit)
+* [X] Add optional and required fields (edit)
 * [ ] Change * to html entity
 * [ ] Change ' to html entity in my resources
 
