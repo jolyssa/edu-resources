@@ -7,9 +7,18 @@
 
 #### Add Resources Route /add-resources
 
-* [ ] Add resources: if not signed in, redirect to login page
-* [ ] Edit resources: the same
+* [X] Add resources: if not signed in, redirect to login page
+* [X] Edit resources: the same
 * [X] addResources button: homecards and navbar
+* [X] Protect addResource, editResource, and my Resources in App
+* [ ] Protect edit resource in the backend (having trouble)
+
+#### Add / Edit Page
+
+* [X] Add optional and required fields (add)
+* [ ] Add optional and required fields (edit)
+* [ ] Change * to html entity
+* [ ] Change ' to html entity in my resources
 
 #### Legacy Resources
 
@@ -19,8 +28,15 @@
 
 * [ ] Get new fav icon
 * [ ] Local passport integration
-* [ ] my resources, truncate text to 90 characters like on homepage
+* [X] my resources, truncate text to 90 characters like on homepage (reused ResourceListing component for this)
 * [ ] change categories list to tags so you can select (on filter) multiple, and resources can have multiple categories.
+
+#### Hosting
+
+* [ ] Change ALL links for localhost:5000
+* [ ] Change ALL links for localhost:4444
+* [ ] Change .env in backend and frontend -> VITE_API_URL and VITE_BASE_URL and PORT (backend)
+* [ ] Hosting backend separately or no ????? probably.
 
 ### FUTURE UPDATES:
 
