@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 
-const VITE_BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:5000'
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL
 
 const AuthContext = createContext()
 
