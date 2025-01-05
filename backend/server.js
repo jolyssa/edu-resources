@@ -21,16 +21,19 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 //? Add session middleware before routes
-app.use(session({
+const sessionConfig = {
   secret: process.env.SESSION_SECRET || 'keyboard cat',
   resave: false,
   saveUninitialized: false,
+  proxy: true, // Required for Cloudflare Pages
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // true in production
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // important for cross-site cookies
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    domain: process.env.NODE_ENV === 'production' ? '.eduresources.site' : undefined
   }
-}))
+}
+app.use(session(sessionConfig))
 
 //? Initialize passport
 app.use(passport.initialize())
@@ -38,7 +41,7 @@ app.use(passport.session())
 
 //?CORS configuration
 app.use(cors({
-  origin: [`process.env.${FRONTEND_URL}`,'http://localhost:4444', 'http://localhost:5173', 'https://edu-resources.pages.dev', 'https://eduresources.site'], // Allow these sites
+  origin: [process.env.FRONTEND_URL,'http://localhost:4444', 'http://localhost:5173', 'https://edu-resources.pages.dev', 'https://eduresources.site'], // Allow these sites
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
