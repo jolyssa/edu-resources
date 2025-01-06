@@ -18,7 +18,7 @@ const ResourcePage = ({ deleteResource }) => {
     const navigate = useNavigate()
     const { id } = useParams()
     const resource = useLoaderData()
-    const isOwner = user && resource.user && user._id === resource.user
+    const isOwner = user && resource.user && user._id === resource.user._id
 
 
     const onDeleteClick = async (resourceId) => {
@@ -146,11 +146,15 @@ const ResourcePage = ({ deleteResource }) => {
 
 const resourceLoader = async ({ params }) => {
     try {
-        const res = await fetch(`${VITE_API_URL}/resources/${params.id}`)
+        const res = await fetch(`${VITE_API_URL}/resources/${params.id}`, {
+            credentials: 'include' 
+        }) // Auth cookies
         if (!res.ok) {
             throw new Error('Failed to fetch resource')
         }
-        return await res.json()
+        const data = await res.json()
+        console.log("Loaded resource data:", data) // Add this to debug
+        return data
     } catch (error) {
         console.error('Error loading resource:', error)
         throw error

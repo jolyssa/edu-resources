@@ -5,6 +5,9 @@ import { useAuth } from '../context/AuthContext'
 
 const ResourceListing = ({ resources }) => {
 
+    console.log("Resource data:", resources); // Add this line
+    console.log("User data from resource:", resources.user); // Add this lines
+
     const [showFullDescription, setShowFullDescription] = useState(false)
 
     let description = resources.description
@@ -18,6 +21,20 @@ const ResourceListing = ({ resources }) => {
     return (
 
         <div className="bg-white rounded-xl shadow-md relative text-black hover:shadow-2xl transition duration-500" data-aos="fade" data-aos-duration="700" data-aos-once="true">
+            <div className="absolute top-4 right-4 flex items-center">
+                {resources.user && (
+                    <div className="relative">
+                        <img
+                            src={resources.user.avatar}
+                            alt={`${resources.user.displayName}'s Profile`}
+                            className="w-11 h-11 rounded-full border-2 border-white shadow-md"
+                        />
+                        <div className="absolute -bottom-6 right-0 bg-white px-2 py-1 rounded-md shadow-sm text-xs">
+                            {resources.user.displayName}
+                        </div>
+                    </div>
+                )}
+            </div>
             
             <div className="p-4">
                 <div className="mb-6">
