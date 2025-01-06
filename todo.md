@@ -56,7 +56,7 @@
 
 * [ ] People can create lists (like GitHub w/ stars, create a list and add resources to a list)
 * [ ] Resources can be public or private
-* [ ] fix filter to work with pagination
+* [X] fix filter to work with pagination
 
 #### ERRORS OR FUTURE FIXES
 
