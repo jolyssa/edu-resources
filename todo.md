@@ -22,9 +22,9 @@
 
 #### Mobile
 
-* [ ] Fix scroll
+* [X] Fix scroll
 * [X] fix nav (dasiyui?) yes
-* [ ] fix filter
+* [X] fix filter
 
 #### Login
 
@@ -43,7 +43,7 @@
 * [ ] make lists shareable
 * [X] anims for certain elements
 * [ ] pagination for my resources (24 per page)
-* [ ] pagination working with filter on resource page
+* [X] pagination working with filter on resource page
 
 #### Hosting
 
