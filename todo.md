@@ -23,7 +23,7 @@
 #### Mobile
 
 * [ ] Fix croll
-* [ ] fix nav (daiyui?)
+* [X] fix nav (daiyui?)
 * [ ] fix filter
 
 #### Login
@@ -40,6 +40,8 @@
 * [ ] Local passport integration
 * [X] my resources, truncate text to 90 characters like on homepage (reused ResourceListing component for this)
 * [ ] change categories list to tags so you can select (on filter) multiple, and resources can have multiple categories.
+* [ ] make lists shareable
+* [ ] anims for certain elements
 
 #### Hosting
 
