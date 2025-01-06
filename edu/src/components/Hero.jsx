@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const Hero = ({ subtitle = 'Explore the best resources and tools to level up your skills. Add a resource to share the wealth.' }) => {
     return (
         <>
@@ -24,6 +26,13 @@ const Hero = ({ subtitle = 'Explore the best resources and tools to level up you
                         <p className="mt-20 mb-4 text-xl text-white px-6 sm:px-16 animate-fade animate-duration-2000">
                             {subtitle}
                         </p>
+
+                        <button className="mt-8 bg-red-50 py-4 px-6 font-bold rounded-2xl text-xl hover:bg-black hover:text-white transition duration-500">
+                            <Link to='/login'>
+                            Get Started
+                            </Link>
+                            
+                            </button>
                     </div>
                 </div>
             </section>
