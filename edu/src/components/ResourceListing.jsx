@@ -14,7 +14,8 @@ const ResourceListing = ({ resources }) => {
 
 
     return (
-        <div className="bg-white rounded-xl shadow-md hover:shadow-2xl transition duration-500 relative text-black">
+        
+        <div className="bg-white rounded-xl shadow-md relative text-black hover:shadow-2xl transition duration-500" data-aos="fade" data-aos-duration="700" data-aos-once="true">
             <div className="p-4">
                 <div className="mb-6">
                     <div className="text-gray-600 my-2">{resources.type}</div>

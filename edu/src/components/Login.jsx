@@ -1,5 +1,6 @@
 import logo from '../assets/images/logo inverse.png'
 import { FaGoogle } from 'react-icons/fa'
+import Card from './Card'
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:5000'
 
 const handleGoogleSignIn = () => {
@@ -11,25 +12,28 @@ const Login = () => {
         <>
 
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <img
-                        alt="Edu Resources Logo"
-                        src={logo}
-                        className="mx-auto h-32 w-auto "
-                    />
-                    <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-                        Sign in to your account or sign up below
-                    </h2>
-                </div>
+                <Card bg='bg-red-50'>
+                    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                        <img
+                            alt="Edu Resources Logo"
+                            src={logo}
+                            className="mx-auto h-32 w-auto "
+                        />
+                        <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+                            Sign in to your account or sign up below
+                        </h2>
+                    </div>
 
-                <div className='flex justify-center flex-row'>
-                    <button onClick={handleGoogleSignIn} className="bg-red-500 hover:bg-red-400 text-white font-bold mt-10 py-4 px-28 sm:px-40 rounded-lg shadow-md transition duration-300 text-center flex items-center justify-center space-x-2"
-                    >
-                        <FaGoogle className="text-2xl mr-3"/>
-                        Google
-                        
-                    </button>
-                </div>
+                    <div className='flex justify-center flex-row'>
+                        <button onClick={handleGoogleSignIn} className="bg-red-500 hover:bg-red-400 text-white font-bold mt-10 py-4 px-28 sm:px-40 rounded-lg shadow-md transition duration-300 text-center flex items-center justify-center space-x-2"
+                        >
+                            <FaGoogle className="text-2xl mr-3" />
+                            Google
+
+                        </button>
+                    </div>
+                </Card>
+
 
 
 

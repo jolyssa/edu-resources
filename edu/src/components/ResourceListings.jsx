@@ -3,10 +3,7 @@ import Spinner from './Spinner'
 import ResourceListing from './ResourceListing'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-//? API URL
 const VITE_BASE_URL = import.meta.env.VITE_API_URL
-
-// const location = useLocation()
 const ITEMS_PER_PAGE = 24
 
 const ResourceListings = ({ isHome = false }) => {
@@ -15,21 +12,20 @@ const ResourceListings = ({ isHome = false }) => {
   const [error, setError] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
+  const [allResources, setAllResources] = useState([]) // Store all resources for client-side filtering
   const [filters, setFilters] = useState({
     type: '',
     level: '',
     category: ''
   })
 
-  //? fetching data
   useEffect(() => {
     const fetchResources = async () => {
       try {
         const apiUrl = isHome
           ? `${VITE_BASE_URL}/resources?limit=6`
-          : `${VITE_BASE_URL}/resources?page=${currentPage}&limit=${ITEMS_PER_PAGE}`
+          : `${VITE_BASE_URL}/resources?limit=1000` // Fetch all resources for client-side filtering
 
-        console.log('Fetching from:', apiUrl)
         const res = await fetch(apiUrl, {
           method: 'GET',
           headers: {
@@ -43,36 +39,48 @@ const ResourceListings = ({ isHome = false }) => {
         }
 
         const data = await res.json()
-        console.log('Fetched data:', data.resources)
+        setAllResources(data.resources)
         setResources(data.resources)
-        setTotalPages(data.totalPages)
-
       } catch (err) {
         console.error('Error fetching data:', err)
         setError(`Error fetching resources: ${err.message}`)
-
       } finally {
         setLoading(false)
       }
     }
 
     fetchResources()
-  }, [isHome, currentPage])
+  }, [isHome])
+
+  // Apply filters and pagination
+  useEffect(() => {
+    if (!isHome) {
+      const filteredResources = allResources.filter(resource => {
+        return (!filters.type || resource.type === filters.type) &&
+          (!filters.level || resource.level === filters.level) &&
+          (!filters.category || resource.info.category === filters.category)
+      })
+
+      // Calculate total pages based on filtered results
+      const newTotalPages = Math.ceil(filteredResources.length / ITEMS_PER_PAGE)
+      setTotalPages(newTotalPages)
+      
+      // Reset to page 1 if current page is out of bounds
+      if (currentPage > newTotalPages) {
+        setCurrentPage(1)
+      }
+
+      // Paginate the filtered results
+      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
+      const paginatedResources = filteredResources.slice(startIndex, startIndex + ITEMS_PER_PAGE)
+      setResources(paginatedResources)
+    }
+  }, [filters, currentPage, allResources, isHome])
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage)
     window.scrollTo(0, 0)
   }
-
-  if (error) return <div className="text-center text-red-500">{error}</div>
-
-  //? Filtering based on type, level or category
-  const typeOptions = ['Book', 'Repository', 'Video', 'Website', 'Bootcamp', 'Youtube Channel', 'Course', 'Community']
-  const levelOptions = ['Beginner', 'Intermediate', 'Advanced', 'Everyone']
-  const categoryOptions = ['Web Development', 'Mobile Development', 'Game Development', 'Data Science', 'Cloud Computing', 'DevOps', 'Cybersecurity', 'Artifical Intelligence', 'Data Structures and Algorithms', 'Machine Learning', 'Database Management', 'Agile and Scrum', 'Career Development', 'General Skills',
-    'Business and Entrepreneurship',
-    'Marketing', 'Product Management', 'Blockchain and Cryptocurrencies', 'Design',
-    'Networking',]
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target
@@ -80,24 +88,23 @@ const ResourceListings = ({ isHome = false }) => {
       ...prev,
       [name]: value
     }))
+    setCurrentPage(1) // Reset to first page when filters change
   }
 
-  const filteredResources = resources.filter(resource => {
-    return (!filters.type || resource.type === filters.type) &&
-      (!filters.level || resource.level === filters.level) &&
-      (!filters.category || resource.info.category === filters.category)
-  })
+  const typeOptions = ['Book', 'Repository', 'Video', 'Website', 'Bootcamp', 'Youtube Channel', 'Course', 'Community']
+  const levelOptions = ['Beginner', 'Intermediate', 'Advanced', 'Everyone']
+  const categoryOptions = ['Web Development', 'Mobile Development', 'Game Development', 'Data Science', 'Cloud Computing', 'DevOps', 'Cybersecurity', 'Artifical Intelligence', 'Data Structures and Algorithms', 'Machine Learning', 'Database Management', 'Agile and Scrum', 'Career Development', 'General Skills', 'Business and Entrepreneurship', 'Marketing', 'Product Management', 'Blockchain and Cryptocurrencies', 'Design', 'Networking']
+
+  if (error) return <div className="text-center text-red-500">{error}</div>
 
   return (
     <>
-
-      {/* Only show filters if not on home page */}
       {!isHome && (
-        <div className="mx-28 mb-8  py-4 px-8 rounded-lg shadow  mt-8">
+        <div className="mx-4 md:mx-8 lg:mx-28 mb-8 py-4 px-4 md:px-8 rounded-lg shadow mt-8">
           <h2 className="text-xl font-bold mb-4 text-black">Filter Resources</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-            <div>
-              <label className="block text-gray-700 mb-2 ">Type</label>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-2">
+              <label className="block text-gray-700">Type</label>
               <select
                 name="type"
                 value={filters.type}
@@ -111,8 +118,8 @@ const ResourceListings = ({ isHome = false }) => {
               </select>
             </div>
 
-            <div>
-              <label className="block text-gray-700 mb-2">Level</label>
+            <div className="space-y-2">
+              <label className="block text-gray-700">Level</label>
               <select
                 name="level"
                 value={filters.level}
@@ -126,8 +133,8 @@ const ResourceListings = ({ isHome = false }) => {
               </select>
             </div>
 
-            <div>
-              <label className="block text-gray-700 mb-2">Category</label>
+            <div className="space-y-2">
+              <label className="block text-gray-700">Category</label>
               <select
                 name="category"
                 value={filters.category}
@@ -141,9 +148,12 @@ const ResourceListings = ({ isHome = false }) => {
               </select>
             </div>
           </div>
-          <div className="mt-4 flex justify-end gap-3 ">
+          <div className="mt-4 flex justify-end gap-3">
             <button
-              onClick={() => setFilters({ type: '', level: '', category: '' })}
+              onClick={() => {
+                setFilters({ type: '', level: '', category: '' })
+                setCurrentPage(1)
+              }}
               className="px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-gray-200 transition duration-200"
             >
               Reset Filters
@@ -152,7 +162,6 @@ const ResourceListings = ({ isHome = false }) => {
         </div>
       )}
 
-      {/* Resource Listings here */}
       <section className="bg-red-50 px-4 py-10">
         <div className="container-xl lg:container m-auto">
           <h2 className="text-3xl font-bold text-red-500 mb-6 text-center">
@@ -163,8 +172,8 @@ const ResourceListings = ({ isHome = false }) => {
             <Spinner loading={loading} />
           ) : (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {(!isHome ? filteredResources : resources).map((resource) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {resources.map((resource) => (
                   <ResourceListing key={resource._id} resources={resource} />
                 ))}
               </div>

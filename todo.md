@@ -22,13 +22,13 @@
 
 #### Mobile
 
-* [ ] Fix croll
-* [X] fix nav (daiyui?)
+* [ ] Fix scroll
+* [X] fix nav (dasiyui?) yes
 * [ ] fix filter
 
 #### Login
 
-* [X] Now that it' deployed, ign in int working. fix.
+* [X] Now that it's deployed, ign in int working. fix.
 
 #### Legacy Resources
 
@@ -41,7 +41,9 @@
 * [X] my resources, truncate text to 90 characters like on homepage (reused ResourceListing component for this)
 * [ ] change categories list to tags so you can select (on filter) multiple, and resources can have multiple categories.
 * [ ] make lists shareable
-* [ ] anims for certain elements
+* [X] anims for certain elements
+* [ ] pagination for my resources (24 per page)
+* [ ] pagination working with filter on resource page
 
 #### Hosting
 

@@ -7,7 +7,7 @@ const Navbar = () => {
 
     const linkClass = ({ isActive }) => isActive ? 'btn lg:text-lg bg-black text-white hover:bg-gray-900 hover:text-white pt-2 pb-3 border-none' : 'text-white hover:bg-gray-900 transition duration-300 hover:text-white rounded-md px-3 pt-2 pb-3'
 
-    const signInClass = ({ isActive }) => isActive ? 'btn bg-black text-white hover:bg-gray-900 hover:text-white' : 'btn bg-red-50 hover:bg-red-200 text-black border-none'
+    const signInClass = ({ isActive }) => isActive ? 'btn bg-black text-white hover:bg-gray-900 hover:text-white border-none' : 'btn bg-red-50 hover:bg-red-200 text-black border-none'
 
     const { user } = useAuth()
 

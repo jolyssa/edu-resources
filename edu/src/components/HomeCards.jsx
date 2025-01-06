@@ -24,7 +24,7 @@ const HomeCards = () => {
 
                         <h2 className="text-2xl font-bold text-black ">For Learners</h2>
                         <p className="mt-2 mb-4 text-black">
-                            Find the perfect coding resources to build your skills and shape your future
+                            Find the perfect coding resources to build your existing skills, master new ones, and shape your future
                         </p>
                         <Link
                             to="/resources"
