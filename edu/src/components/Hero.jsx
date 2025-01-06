@@ -1,4 +1,4 @@
-const Hero = ({ subtitle = 'Explore the best resources, tutorials, and tools to level up your skills. Add a resource to share the wealth.' }) => {
+const Hero = ({ subtitle = 'Explore the best resources and tools to level up your skills. Add a resource to share the wealth.' }) => {
     return (
         <>
             {/* <!-- Hero --> */}
@@ -14,16 +14,14 @@ const Hero = ({ subtitle = 'Explore the best resources, tutorials, and tools to 
                             <span className="relative inline-block">
                                 <span className="relative z-10 text-red-200">Here</span>
                                 <span
-                                    className="absolute inset-x-0 bottom-0 bg-no-repeat bg-contain w-80 h-80"
+                                    className="absolute inset-x-0 bg-no-repeat bg-contain h-32 w-32 bottom-[-90px] left-[-22px] md:w-72 md:h-72 md:bottom-[-12.5rem] md:left-[-3.75rem]"
                                     style={{
-                                        backgroundImage: "url('brush.png')",
-                                        bottom: '-230px',
-                                        left: '-68px',
+                                        backgroundImage: "url('brush.png')"
                                     }}
                                 ></span>
                             </span>
                         </h1>
-                        <p className="mt-20 mb-4 text-xl text-white px-16">
+                        <p className="mt-20 mb-4 text-xl text-white px-6 sm:px-16">
                             {subtitle}
                         </p>
                     </div>
