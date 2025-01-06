@@ -20,8 +20,8 @@ router.get('/google/callback',
     callbackURL: process.env.NODE_ENV === 'production' 
       ? "https://edu-resources-backend.onrender.com/auth/google/callback"
       : "http://localhost:5000/auth/google/callback",
-    failureRedirect: `${process.env.FRONTEND_URL}/login?success=false`,
-    successRedirect: `${process.env.FRONTEND_URL}?success=true`,
+    failureRedirect: `https://eduresources.site/login?success=false`,
+    successRedirect: `https://eduresources.site?success=true`,
   })
 )
 
