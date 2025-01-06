@@ -15,6 +15,7 @@ router.get('/resources', async (req, res) => {
   try {
     const limit = req.query.limit ? parseInt(req.query.limit) : 0
     const resources = await Resource.find()
+      .populate('user', 'avatar displayName')
       .limit(limit)
       .sort({ createdAt: -1 }) // Sort by newest first
     res.json(resources)

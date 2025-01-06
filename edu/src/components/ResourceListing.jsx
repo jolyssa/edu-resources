@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { SiLevelsdotfyi } from "react-icons/si"
 import { Link } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 const ResourceListing = ({ resources }) => {
 
@@ -12,14 +13,16 @@ const ResourceListing = ({ resources }) => {
         description = description.substring(0, 90) + '...'
     }
 
+    const { user } = useAuth()
 
     return (
-        
+
         <div className="bg-white rounded-xl shadow-md relative text-black hover:shadow-2xl transition duration-500" data-aos="fade" data-aos-duration="700" data-aos-once="true">
+            
             <div className="p-4">
                 <div className="mb-6">
-                    <div className="text-gray-600 my-2">{resources.type}</div>
                     <h3 className="text-xl font-bold">{resources.title}</h3>
+                    <div className="text-gray-600 my-2">{resources.type}</div>
                 </div>
 
                 <div className="mb-5">
@@ -28,7 +31,7 @@ const ResourceListing = ({ resources }) => {
 
                 <button onClick={() => setShowFullDescription((prevState) => !prevState)} className="text-red-500 mb-5 hover:text-red-400 transition duration-200 text-xs">{showFullDescription ? 'See Less' : 'See More'}</button>
 
-                <h3 className="text-red-500 mb-2 font-bold">Created By: <span className='font-normal'>{resources.createdBy}</span></h3>
+                <h3 className="text-red-500 mb-2 font-bold">Made by <span className='font-normal'>{resources.createdBy}</span></h3>
 
                 <div className="border border-gray-100 mb-5"></div>
 

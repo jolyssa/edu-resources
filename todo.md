@@ -13,6 +13,10 @@
 * [X] Protect addResource, editResource, and my Resources in App
 * [ ] Protect edit resource in the backend (having trouble)
 
+### Card Change
+
+* [ ] Redesign resource listing, show user who posted it by showing a little picture icon of the person who owns the resource
+
 #### Add / Edit Page
 
 * [X] Add optional and required fields (add)
@@ -25,10 +29,11 @@
 * [X] Fix scroll
 * [X] fix nav (dasiyui?) yes
 * [X] fix filter
+* [ ] single resource listing is UGLAYYY, FIX IT!!! and make it responsive
 
 #### Login
 
-* [X] Now that it's deployed, ign in int working. fix.
+* [X] Now that it's deployed, sign in isnt working. fix.
 
 #### Legacy Resources
 
