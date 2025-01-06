@@ -1,8 +1,10 @@
 # **Edu Resources**
 
-A platform for educators to share valuable coding tools, guides, and materials, and for learners to browse and discover the best resources to enhance their coding skills.
+A full-stack MERN application that helps developers share and discover educational resources. Users can authenticate with Google, create, manage, and explore various types of educational content including books, courses, videos, and more.
 
-![](assets/20250106_023600_image.png)
+Made for educators to share valuable coding tools, guides, and materials, and for learners to browse and discover the best resources to enhance their coding skills.
+
+![](**assets/20250106_023600_image.png**)
 
 ### *Edu Resources is now live [here](https://eduresources.site/)!*
 
@@ -10,20 +12,57 @@ A platform for educators to share valuable coding tools, guides, and materials, 
 
 * **For Educators:** Share your educational tools, courses, tutorials, and materials with the learning community.
 * **For Learners:** Browse curated coding resources, including courses, guides, tutorials, and more to start or advance your coding journey.
-* **CRUD Functionality:** Add, edit, and remove resources to keep the library up to date.
+* **Resource Management**: Add, edit, and remove resources to keep the library up to date.
 * **Filter:** Easily search for resources based on type, skill level, and category.
-* **Authentication:** Google Strategy
 * **Users:** A profile with the ability to browse all of your own resources.
+* **Google OAuth Authentication** : Secure user authentication using Google login
+* **Resource Categories** : Multiple resource types including:
+* * Books
+  * Online Courses
+  * Video Tutorials
+  * Websites
+  * GitHub Repositories
+  * YouTube Channels
+  * Bootcamps
+  * Communities
+* **Difficulty Levels** : Resources categorised by:
+
+  * Beginner
+  * Intermediate
+  * Advanced
+  * Everyone
+* **Protected Routes** : Secure access control for authenticated users
+* **Responsive Design** : Mobile-friendly interface using Tailwind CSS
 
 ## **Tech Stack**
 
-* **Frontend:** React.js
-* **Backend:** **(New)** Node.js, Express, Mongoose, MongoDB **(Old)** JSON Server API
-* **Routing:** React Router DOM and Express Router
-* **State Management:** React `useState`
-* **Styling:** Tailwind CSS
-* **Dev Tools:** Vite, ESLint, PostCSS
+### Frontend
 
+* React + Vite
+* React Router v6
+* Tailwind CSS
+* Context API for state management
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* Passport.js with Google OAuth 2.0
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+* Node.js (v14 or higher)
+* MongoDB
+* npm or yarn
+
+You'll also need:
+
+* A Google Cloud Console account for OAuth credentials
+* MongoDB Atlas account (for production database)
 
 ## **Getting Started**
 
@@ -45,7 +84,25 @@ cd backend/
 npm install
 ```
 
-### 3. Start the server
+### 3. Create your environment variables
+
+Create a .env file in the config folder in the backend directory:
+
+```js
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
+
+Create a `.env` file in the frontend directory:
+
+```js
+VITE_API_URL=http://localhost:5000/api
+VITE_BASE_URL=http://localhost:5000
+```
+
+### 4. Start the server
 
 For development purposes, run the API with the following (make sure you're in backend/):
 
@@ -53,7 +110,7 @@ For development purposes, run the API with the following (make sure you're in ba
 
 The API should now be available at `http://localhost:5000/api/resources`.
 
-### 4. Run the application
+### 5. Run the application
 
 In another terminal window, start the application locally (make sure you're in edu/):
 
@@ -87,9 +144,19 @@ State is managed using React's `useState` hook to dynamically render data (e.g.,
 
 ### **Styling with Tailwind CSS:**
 
-* [ ] The app uses **Tailwind CSS** for styling, providing a fast and efficient way to design responsive, customisable user interfaces.
+The app uses **Tailwind CSS** for styling, providing a fast and efficient way to design responsive, customisable user interfaces.
 
-## **Contributing**
+## Future Improvements
+
+* [X] User profiles with saved resources
+* [ ] Advanced search and filtering
+* [ ] Resource sharing functionality
+* [ ] Resource recommendations
+* [ ] List creation (like GitHub with stars, create a list and add resources to a list)
+* [ ] Private or public resources
+* [ ] Minor UI changes
+
+## Contributing
 
 I welcome contributions to improve this platform! If you'd like to help, please follow these steps:
 
