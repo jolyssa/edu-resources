@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
-const AddResourcePage = ({ addResourceSubmit }) => {
+const AddResourcePage = ({ addResourceSubmit, bg = 'focus:outline-none focus:ring-0 focus:border-red-500 border-2 caret-red-500' }) => {
     const [title, setTitle] = useState('')
     const [type, setType] = useState('Book')
     const [level, setLevel] = useState('Beginner')
@@ -47,10 +47,10 @@ const AddResourcePage = ({ addResourceSubmit }) => {
         <section>
             <div className="container m-auto max-w-2xl py-24">
                 <div
-                    className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
+                    className="bg-white text-black px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
                 >
                     <form onSubmit={submitForm}>
-                        <h2 className="text-3xl text-center font-semibold mb-6">Add a Resource</h2>
+                        <h2 className="text-3xl text-center font-semibold mb-6 {bg}">Add a Resource</h2>
 
                         <div className="mb-4">
                             <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
@@ -58,7 +58,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                             <select
                                 id="type"
                                 name="type"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 required
                                 value={type}
                                 onChange={(e) => setType(e.target.value)}
@@ -82,7 +82,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                                 type="text"
                                 id="title"
                                 name="title"
-                                className="border rounded w-full py-2 px-3 mb-2"
+                                className={`border rounded w-full py-2 px-3 mb-2 ${bg}`}
                                 placeholder="eg. JavaScript for Dummies"
                                 required
                                 value={title}
@@ -97,7 +97,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                             <textarea
                                 id="description"
                                 name="description"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 rows="4"
                                 placeholder="Briefly describe the resource"
                                 value={description}
@@ -113,8 +113,8 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                                 type='text'
                                 id='createdBy'
                                 name='createdBy'
-                                className='border rounded w-full py-2 px-3 mb-2'
-                                placeholder='Who created this resource?'
+                                className={`border rounded w-full py-2 px-3 mb-2 ${bg}`}
+                                placeholder='Who created this resource? Can be a username, real name, etc.'
                                 required
                                 value={createdBy}
                                 onChange={(e) => setcreatedBy(e.target.value)}
@@ -127,7 +127,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                             <select
                                 id="level"
                                 name="level"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 required
                                 value={level}
                                 onChange={(e) => setLevel(e.target.value)}
@@ -147,7 +147,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                             <select
                                 id="category"
                                 name="category"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 required
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
@@ -183,7 +183,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                                 type="text"
                                 id="category"
                                 name="category"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 placeholder="Resource Link"
                                 value={link}
                                 onChange={(e) => setLink(e.target.value)}
@@ -199,7 +199,7 @@ const AddResourcePage = ({ addResourceSubmit }) => {
                                 type="number"
                                 id="published"
                                 name="published"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 placeholder="Enter the year this resource was initally published"
                                 value={published}
                                 onChange={(e) => setPublished(e.target.value)}

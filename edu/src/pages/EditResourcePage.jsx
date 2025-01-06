@@ -4,7 +4,7 @@ import { toast } from "react-toastify"
 import { useAuth } from '../context/AuthContext'
 
 
-const EditResourcePage = ({ updateResourceSubmit }) => {
+const EditResourcePage = ({ updateResourceSubmit, bg = 'focus:outline-none focus:ring-0 focus:border-red-500 border-2 caret-red-500' }) => {
 
 
     const resource = useLoaderData()
@@ -99,7 +99,7 @@ const EditResourcePage = ({ updateResourceSubmit }) => {
                             <select
                                 id="type"
                                 name="type"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 required
                                 value={type}
                                 onChange={(e) => setType(e.target.value)}
@@ -123,7 +123,7 @@ const EditResourcePage = ({ updateResourceSubmit }) => {
                                 type="text"
                                 id="title"
                                 name="title"
-                                className="border rounded w-full py-2 px-3 mb-2"
+                                className={`border rounded w-full py-2 px-3 mb-2 ${bg}`}
                                 placeholder="eg. JavaScript for Dummies"
                                 required
                                 value={title}
@@ -133,12 +133,12 @@ const EditResourcePage = ({ updateResourceSubmit }) => {
                         <div className="mb-4">
                             <label
                                 htmlFor="description"
-                                className="block text-gray-700 font-bold mb-2"
-                            >Description <span className="text-xs text-red-600"> *required</span></label>
+                                className="block text-gray-700 font-bold mb-2 "
+                            >Description <span className="text-xs text-red-600 "> *required</span></label>
                             <textarea
                                 id="description"
                                 name="description"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 rows="4"
                                 placeholder="Briefly describe the resource"
                                 value={description}
@@ -154,7 +154,7 @@ const EditResourcePage = ({ updateResourceSubmit }) => {
                                 type='text'
                                 id='createdBy'
                                 name='createdBy'
-                                className='border rounded w-full py-2 px-3 mb-2'
+                                className={`border rounded w-full py-2 px-3 mb-2 ${bg}`}
                                 placeholder='Who created this resource?'
                                 required
                                 value={createdBy}
@@ -168,7 +168,7 @@ const EditResourcePage = ({ updateResourceSubmit }) => {
                             <select
                                 id="location"
                                 name="location"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 required
                                 value={level}
                                 onChange={(e) => setLevel(e.target.value)}
@@ -188,7 +188,7 @@ const EditResourcePage = ({ updateResourceSubmit }) => {
                             <select
                                 id="category"
                                 name="category"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 required
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
@@ -224,7 +224,7 @@ const EditResourcePage = ({ updateResourceSubmit }) => {
                                 type="text"
                                 id="category"
                                 name="category"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 placeholder="Resource Link"
                                 value={link}
                                 onChange={(e) => setLink(e.target.value)}
@@ -240,7 +240,7 @@ const EditResourcePage = ({ updateResourceSubmit }) => {
                                 type="number"
                                 id="published"
                                 name="published"
-                                className="border rounded w-full py-2 px-3"
+                                className={`border rounded w-full py-2 px-3 ${bg}`}
                                 placeholder="Enter the year this resource was initally published"
                                 value={published}
                                 onChange={(e) => setPublished(e.target.value)}

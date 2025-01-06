@@ -1,4 +1,4 @@
-const Hero = ({ title = 'Your Coding Education Lives Here', subtitle = 'Explore the best resources, tutorials, and tools to level up your skills. Add a resource to share the wealth.'}) => {
+const Hero = ({ subtitle = 'Explore the best resources, tutorials, and tools to level up your skills. Add a resource to share the wealth.'}) => {
     return (
         <>
             {/* <!-- Hero --> */}
@@ -8,9 +8,9 @@ const Hero = ({ title = 'Your Coding Education Lives Here', subtitle = 'Explore 
                 >
                     <div className="text-center">
                         <h1
-                            className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl italic"
+                            className="text-4xl font-extrabold text-white sm:text-5xl md:text-7xl"
                         >
-                            { title }
+                            Your Coding Education Lives <span className="text-gray-800 underline">Here</span>
                         </h1>
                         <p className="mt-10 mb-4 text-xl text-white px-16">
                             { subtitle }

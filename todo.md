@@ -28,7 +28,7 @@
 
 #### Login
 
-* [ ] Now that it' deployed, ign in int working. fix.
+* [X] Now that it' deployed, ign in int working. fix.
 
 #### Legacy Resources
 

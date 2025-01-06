@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 import Spinner from './Spinner'
 import ResourceListing from './ResourceListing'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
@@ -95,15 +94,15 @@ const ResourceListings = ({ isHome = false }) => {
       {/* Only show filters if not on home page */}
       {!isHome && (
         <div className="mx-28 mb-8  py-4 px-8 rounded-lg shadow  mt-8">
-          <h2 className="text-xl font-bold mb-4">Filter Resources</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <h2 className="text-xl font-bold mb-4 text-black">Filter Resources</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
             <div>
-              <label className="block text-gray-700 mb-2">Type</label>
+              <label className="block text-gray-700 mb-2 ">Type</label>
               <select
                 name="type"
                 value={filters.type}
                 onChange={handleFilterChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border-2 rounded bg-white text-black focus:outline-none focus:ring-0 focus:border-red-500"
               >
                 <option value="">All Types</option>
                 {typeOptions.map(type => (
@@ -118,7 +117,7 @@ const ResourceListings = ({ isHome = false }) => {
                 name="level"
                 value={filters.level}
                 onChange={handleFilterChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border-2 rounded bg-white text-black focus:outline-none focus:ring-0 focus:border-red-500"
               >
                 <option value="">All Levels</option>
                 {levelOptions.map(level => (
@@ -133,7 +132,7 @@ const ResourceListings = ({ isHome = false }) => {
                 name="category"
                 value={filters.category}
                 onChange={handleFilterChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border-2 rounded bg-white text-black focus:outline-none focus:ring-0 focus:border-red-500"
               >
                 <option value="">All Categories</option>
                 {categoryOptions.map(category => (
@@ -142,7 +141,7 @@ const ResourceListings = ({ isHome = false }) => {
               </select>
             </div>
           </div>
-          <div className="mt-4 flex justify-end gap-3">
+          <div className="mt-4 flex justify-end gap-3 ">
             <button
               onClick={() => setFilters({ type: '', level: '', category: '' })}
               className="px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-gray-200 transition duration-200"

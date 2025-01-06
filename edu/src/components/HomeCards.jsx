@@ -21,8 +21,8 @@ const HomeCards = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
 
                     <Card bg='bg-red-200'>
-                        <h2 className="text-2xl font-bold">For Learners</h2>
-                        <p className="mt-2 mb-4">
+                        <h2 className="text-2xl font-bold text-black">For Learners</h2>
+                        <p className="mt-2 mb-4 text-black">
                             Find the perfect coding resources to build your skills and shape your future
                         </p>
                         <Link
@@ -34,8 +34,8 @@ const HomeCards = () => {
                     </Card>
 
                     <Card bg='bg-red-100'>
-                        <h2 className="text-2xl font-bold">For Educators</h2>
-                        <p className="mt-2 mb-4">
+                        <h2 className="text-2xl font-bold text-black">For Educators</h2>
+                        <p className="mt-2 mb-4 text-black">
                             Share your educational resources and help learners discover valuable tools for their growth
                         </p>
                         <Link

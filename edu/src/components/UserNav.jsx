@@ -17,7 +17,7 @@ const UserNav = () => {
                 <img
                     src={user?.avatar}
                     alt="Profile"
-                    className="w-8 h-8 rounded-full"
+                    className="w-11 h-11 rounded-full"
                 />
             </button>
 
