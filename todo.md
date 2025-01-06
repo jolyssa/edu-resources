@@ -58,6 +58,11 @@
 * [ ] Resources can be public or private
 * [ ] fix filter to work with pagination
 
+#### ERRORS OR FUTURE FIXES
+
+* [ ] aos interfering with hover on resourcelisting
+* [ ] might be more useful to see the user who uploaded it, and maybe have the creator of the resource showing somewhere smaller
+
 ▸ 📂 convex         # Backend queries, mutations, and schema definitions
 ▸ 📂 public         # Images, favicons, and other unprocessed assets
 ▾ 📂 src            # Frontend application

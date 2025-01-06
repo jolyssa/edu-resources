@@ -1,17 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui"
 import animated from 'tailwindcss-animated'
-import taos from 'taos/plugin'
 
 export default {
-  content: {
-    files: [
-      "./index.html",
-      "./src/**/*.{js,ts,jsx,tsx}",
-    ],
-    transform: (content) => content.replace(/taos:/g, ''), // Replace 'taos:' with an empty string
-    relative: true, // Enable relative paths
-  },
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -26,8 +21,7 @@ export default {
   },
   plugins: [
     daisyui,
-    animated,
-    taos
+    animated
   ],
   daisyui: {
     themes: ["light"],
@@ -39,10 +33,4 @@ export default {
     logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
     themeRoot: ":root", // The element that receives theme color CSS variables
   },
-  safelist: [
-    '!duration-[0ms]',
-    '!delay-[0ms]',
-    'html.js :where([class*="taos:"]:not(.taos-init))'
-  ],
-
 }
