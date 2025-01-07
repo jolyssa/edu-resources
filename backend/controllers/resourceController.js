@@ -9,7 +9,7 @@ const getResources = async (req, res) => {
 
     const total = await Resource.countDocuments()
     const resources = await Resource.find()
-      .populate('user', 'avatar displayName') // Add this line
+      .populate('user', 'avatar displayName')
       .skip(skip)
       .limit(limit)
       .sort({ createdAt: -1 })
@@ -29,7 +29,7 @@ const getResources = async (req, res) => {
 const getResource = async (req, res) => {
   try {
     const resource = await Resource.findById(req.params.id)
-      .populate('user', 'avatar displayName') // Add this line
+      .populate('user', 'avatar displayName') 
 
     if (resource) {
       res.json(resource)

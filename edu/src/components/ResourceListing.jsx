@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom'
 
 const ResourceListing = ({ resources }) => {
 
-    console.log("Resource data:", resources); // Add this line
-    console.log("User data from resource:", resources.user); // Add this lines
-
     const [showFullDescription, setShowFullDescription] = useState(false)
-
     let description = resources.description
 
     if (!showFullDescription) {

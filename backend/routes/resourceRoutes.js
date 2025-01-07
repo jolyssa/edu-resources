@@ -39,6 +39,7 @@ router.route('/:id')
 router.get('/user/:userId', async (req, res) => {
   try {
     const resources = await Resource.find({ user: req.params.userId })
+      .populate('user', 'avatar displayName')
       .sort({ createdAt: -1 }) // Sort by newest first
     res.json(resources)
   } catch (error) {

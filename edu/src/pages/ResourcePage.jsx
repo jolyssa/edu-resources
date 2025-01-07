@@ -1,7 +1,6 @@
 import { useParams, useLoaderData, Link } from "react-router-dom"
 import { FaArrowLeft } from "react-icons/fa"
 import { SiLevelsdotfyi } from "react-icons/si"
-import { BiSolidCategoryAlt } from "react-icons/bi"
 import { MdModeEdit } from "react-icons/md"
 import { AiFillDelete } from "react-icons/ai" 
 import { HiOutlineTemplate  } from "react-icons/hi"
