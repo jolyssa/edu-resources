@@ -45,63 +45,63 @@ const ResourcePage = ({ deleteResource }) => {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            {/* Header Section */}
+            {/* Header Section - Made responsive */}
             <div className="bg-white border-b">
-                <div className="container mx-auto py-4 px-6">
+                <div className="container mx-auto py-4 px-4 sm:px-6">
                     <Link to="/resources">
-                        <button className="btn bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition duration-300 flex items-center">
+                        <button className="btn bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg transition duration-300 flex items-center text-sm sm:text-base">
                             <FaArrowLeft className="mr-2" /> Back to Resources
                         </button>
                     </Link>
                 </div>
             </div>
 
-            {/* Main Content */}
-            <div className="container mx-auto py-8 px-6">
+            {/* Main Content - Improved mobile padding */}
+            <div className="container mx-auto py-4 sm:py-8 px-4 sm:px-6">
                 <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-                    {/* Resource Header */}
+                    {/* Resource Header - Adjusted padding and layout */}
                     <div className="relative border-b">
-                        <div className="p-8">
-                            {/* Management Controls */}
+                        <div className="p-4 sm:p-8">
+                            {/* Management Controls - Repositioned for mobile */}
                             {isOwner && (
-                                <div className="absolute top-8 right-8 flex items-center gap-4">
+                                <div className="flex items-center gap-2 mb-4 sm:mb-0 sm:absolute sm:top-8 sm:right-8 sm:gap-4">
                                     <Link to={`/edit-resource/${resource._id}`}
                                         className="p-2 hover:bg-gray-100 rounded-full transition duration-200">
-                                        <MdModeEdit className="text-2xl text-gray-600 hover:text-amber-500" />
+                                        <MdModeEdit className="text-xl sm:text-2xl text-gray-600 hover:text-amber-500" />
                                     </Link>
                                     <button 
                                         onClick={() => onDeleteClick(resource._id)}
                                         className="p-2 hover:bg-gray-100 rounded-full transition duration-200">
-                                        <AiFillDelete className="text-2xl text-gray-600 hover:text-red-500" />
+                                        <AiFillDelete className="text-xl sm:text-2xl text-gray-600 hover:text-red-500" />
                                     </button>
                                 </div>
                             )}
 
-                            {/* Title and Type */}
+                            {/* Title and Type - Made responsive */}
                             <div className="max-w-3xl">
-                                <div className="flex items-center gap-3 mb-3">
-                                    <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
-                                    <HiOutlineTemplate className="inline mr-1"/>
+                                <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+                                    <span className="px-2 sm:px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
+                                        <HiOutlineTemplate className="inline mr-1"/>
                                         {resource.type}
                                     </span>
-                                    <div className="flex items-center text-orange-700 text-sm px-3 py-1 bg-orange-100 rounded-full">
+                                    <div className="flex items-center text-orange-700 text-sm px-2 sm:px-3 py-1 bg-orange-100 rounded-full">
                                         <SiLevelsdotfyi className="mr-1" />
                                         {resource.level}
                                     </div>
                                 </div>
-                                <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
                                     {resource.title}
                                 </h1>
                             </div>
                         </div>
                     </div>
 
-                    {/* Content Grid */}
-                    <div className="grid md:grid-cols-3 gap-6 p-8">
+                    {/* Content Grid - Made responsive */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 sm:p-8">
                         {/* Main Content Column */}
-                        <div className="md:col-span-2 space-y-8">
+                        <div className="md:col-span-2 space-y-6 sm:space-y-8">
                             <div>
-                                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
                                     Description
                                 </h3>
                                 <p className="text-gray-600 leading-relaxed">
@@ -117,13 +117,13 @@ const ResourcePage = ({ deleteResource }) => {
                             </div>
                         </div>
 
-                        {/* Sidebar Information */}
-                        <div className="bg-gray-50 rounded-lg p-6">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                        {/* Sidebar Information - Improved mobile layout */}
+                        <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
+                            <h3 className="text-lg font-semibold text-gray-900 mb-4 sm:mb-6">
                                 Resource Details
                             </h3>
                             
-                            <div className="space-y-6">
+                            <div className="space-y-4 sm:space-y-6">
                                 <div>
                                     <div className="flex items-center text-gray-900 mb-2">
                                         <h4 className="font-medium">Category</h4>

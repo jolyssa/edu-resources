@@ -22,7 +22,7 @@ const HomeCards = () => {
 
                     <Card data-aos='fade-down' data-aos-duration="1000" data-aos-once="true" bg='bg-red-200'>
 
-                        <h2 className="text-2xl font-bold text-black ">For Learners</h2>
+                        <h2 className="text-2xl font-bold text-black ">Discover & Learn</h2>
                         <p className="mt-2 mb-4 text-black">
                             Find the perfect coding resources to build your existing skills, master new ones, and shape your future
                         </p>
@@ -35,7 +35,7 @@ const HomeCards = () => {
                     </Card>
 
                     <Card data-aos='fade-up' data-aos-duration="1000" data-aos-delay="1000" data-aos-once="true" bg='bg-red-100'>
-                        <h2 className="text-2xl font-bold text-black">For Educators</h2>
+                        <h2 className="text-2xl font-bold text-black">Share & Contribute</h2>
                         <p className="mt-2 mb-4 text-black">
                             Share your educational resources and help learners discover valuable tools for their growth
                         </p>
