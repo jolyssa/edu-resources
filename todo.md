@@ -15,7 +15,7 @@
 
 ### Card Change
 
-* [ ] Redesign resource listing, show user who posted it by showing a little picture icon of the person who owns the resource
+* [X] Redesign resource listing, show user who posted it by showing a little picture icon of the person who owns the resource
 
 #### Add / Edit Page
 
@@ -30,7 +30,7 @@
 * [X] Fix scroll
 * [X] fix nav (dasiyui?) yes
 * [X] fix filter
-* [ ] single resource listing is UGLAYYY, FIX IT!!! and make it responsive
+* [X] single resource listing is UGLAYYY, FIX IT!!! and make it responsive
 
 #### Login
 
@@ -50,9 +50,8 @@
 * [X] anims for certain elements
 * [ ] pagination for my resources (24 per page)
 * [X] pagination working with filter on resource page
-* [ ]
-
 * [ ] MOVE MY CAR!!!
+* [ ] push items under line is resourcelisting to be on the bottom no matter what
 
 #### Hosting
 
@@ -67,8 +66,11 @@
 * [ ] Resources can be public or private
 * [X] fix filter to work with pagination
 * [ ] Profiles: click icon to view someone's public profile (will only show public resources and lists)
-
-
+* [ ] Add more resource types
+* [ ] Implement character limits on form for each category.
+* [ ] Add more categories: Documentation
+* [ ] Redirect loading back to homepage (rn its success = true), using AuthContext
+* [ ] read for duplicates, resource already exists something like that
 
 ### ERRORS OR FUTURE FIXES
 

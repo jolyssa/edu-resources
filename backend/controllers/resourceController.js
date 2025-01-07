@@ -49,9 +49,9 @@ const createResource = async (req, res) => {
       user: req.user._id
     })
     const savedResource = await resource.save()
-    res.status(201).json(savedResource)
     const populatedResource = await Resource.findById(savedResource._id)
       .populate('user', 'avatar displayName')
+    
       res.status(201).json(populatedResource)
   } catch (error) {
     if (error.name === 'ValidationError') {
