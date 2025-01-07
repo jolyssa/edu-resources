@@ -23,6 +23,7 @@
 * [X] Add optional and required fields (edit)
 * [ ] Change * to html entity
 * [ ] Change ' to html entity in my resources
+* [X] Check if user matches resource user id before deleting
 
 #### Mobile
 
@@ -49,6 +50,9 @@
 * [X] anims for certain elements
 * [ ] pagination for my resources (24 per page)
 * [X] pagination working with filter on resource page
+* [ ]
+
+* [ ] MOVE MY CAR!!!
 
 #### Hosting
 
@@ -62,8 +66,11 @@
 * [ ] People can create lists (like GitHub w/ stars, create a list and add resources to a list)
 * [ ] Resources can be public or private
 * [X] fix filter to work with pagination
+* [ ] Profiles: click icon to view someone's public profile (will only show public resources and lists)
 
-#### ERRORS OR FUTURE FIXES
+
+
+### ERRORS OR FUTURE FIXES
 
 * [ ] aos interfering with hover on resourcelisting
 * [ ] might be more useful to see the user who uploaded it, and maybe have the creator of the resource showing somewhere smaller

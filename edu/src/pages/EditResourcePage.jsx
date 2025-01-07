@@ -17,7 +17,7 @@ const EditResourcePage = ({ updateResourceSubmit, bg = 'focus:outline-none focus
         //* Check if we have both user and resource data
         if (user && resource) {
             //* Verify if the current user is the resource owner
-            if (user._id !== resource.user) {
+            if (user._id !== resource.user._id) {
                 toast.error('Unauthorised: You can only edit your own resources')
                 navigate('/resources')
                 return
@@ -40,7 +40,7 @@ const EditResourcePage = ({ updateResourceSubmit, bg = 'focus:outline-none focus
         e.preventDefault()
 
         //* Double-check authorisation before submitting
-        if (user._id !== resource.user) {
+        if (user._id !== resource.user._id) {
             toast.error('Unauthorised: You can only edit your own resources')
             navigate('/resources')
             return
