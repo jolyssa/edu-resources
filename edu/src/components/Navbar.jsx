@@ -35,8 +35,8 @@ const Navbar = () => {
                             className="menu menu-sm dropdown-content bg-red-50 text-black rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <li>
                                 <NavLink
-                                to="/"
-                                className="">Home
+                                    to="/"
+                                    className="">Home
                                 </NavLink>
                             </li>
                             <li>
@@ -46,25 +46,25 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li>
-                            <NavLink
-                                to="/add-resources"
-                                className=""
-                            >
-                                Add Resources
-                            </NavLink>
+                                <NavLink
+                                    to="/add-resources"
+                                    className=""
+                                >
+                                    Add Resources
+                                </NavLink>
                             </li>
                         </ul>
                     </div>
                     <NavLink className="flex flex-shrink-0 items-center mr-4 lg:ml-16" to="/">
-                                <img
-                                    className="h-16 w-auto"
-                                    src={logo}
-                                    alt="Logo for Edu Resources"
-                                />
-                                <span className="hidden md:block text-white text-3xl font-bold italic ml-4 uppercase">
-                                    Edu-Resources
-                                </span>
-                            </NavLink>
+                        <img
+                            className="h-16 w-auto"
+                            src={logo}
+                            alt="Logo for Edu Resources"
+                        />
+                        <span className="hidden md:block text-white text-3xl font-bold italic ml-4 uppercase">
+                            Edu-Resources
+                        </span>
+                    </NavLink>
                 </div>
                 <div className=" ml-64 navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-lg space-x-4">
@@ -81,7 +81,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li>
-                           <NavLink
+                            <NavLink
                                 to="/add-resources"
                                 className={linkClass}
                             >
@@ -100,11 +100,26 @@ const Navbar = () => {
                         </NavLink>
                     )}
                 </div>
-            </div >
+            </div>
+
+            <div className="lg:mr-16 navbar-end" >
+                {
+                    user ? (
+                        <UserNav />
+                    ) : (
+                        <NavLink to="/login" className={signInClass}
+                        >
+                            Sign In
+                        </NavLink>
+                    )}
+            </div>
         </>
+
+
     )
 }
 
 export default Navbar
+
 
 

@@ -19,6 +19,8 @@ const ResourceListings = ({ isHome = false }) => {
     category: ''
   })
 
+  //hello world how are you...? yes we are typing like madmen 
+
   useEffect(() => {
     const fetchResources = async () => {
       try {

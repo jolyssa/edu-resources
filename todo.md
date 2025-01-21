@@ -11,7 +11,6 @@
 * [X] Edit resources: the same
 * [X] addResources button: homecards and navbar
 * [X] Protect addResource, editResource, and my Resources in App
-* [ ] Protect edit resource in the backend (having trouble)
 
 ### Card Change
 
@@ -43,10 +42,7 @@
 #### Misc
 
 * [ ] Get new fav icon
-* [ ] Local passport integration
 * [X] my resources, truncate text to 90 characters like on homepage (reused ResourceListing component for this)
-* [ ] change categories list to tags so you can select (on filter) multiple, and resources can have multiple categories.
-* [ ] make lists shareable
 * [X] anims for certain elements
 * [ ] pagination for my resources (24 per page)
 * [X] pagination working with filter on resource page
@@ -63,19 +59,28 @@
 ### FUTURE UPDATES:
 
 * [ ] People can create lists (like GitHub w/ stars, create a list and add resources to a list)
+* [ ] make lists shareable
+* [ ] change categories to tags so you can select (on filter) multiple, and resources can have multiple categories
 * [ ] Resources can be public or private
 * [X] fix filter to work with pagination
 * [ ] Profiles: click icon to view someone's public profile (will only show public resources and lists)
-* [ ] Add more resource types
+* [ ] Add more resource types: Article,
 * [ ] Implement character limits on form for each category.
 * [ ] Add more categories: Documentation
 * [ ] Redirect loading back to homepage (rn its success = true), using AuthContext
 * [ ] read for duplicates, resource already exists something like that
+* [ ] Button to Add and Edit resource, rounded. MyResourcesPage -> Add First Resource button: make consistent with all the rest.
+* [ ] Local passport integration
+* [ ] Remove all console logs.
+* [ ] When deleting a resource, instead of taking you back to '/resources', it should take you back to where you were last browsing (eg. page 2, in the middle of the page is where you should be redirected to)
+* [ ] After adding a resource, when it redirects you to /resources, the filters should stay on until you reset them.
+* [ ] Add tags: free, or paid. tiers: `$, $$, $$$`
 
 ### ERRORS OR FUTURE FIXES
 
 * [ ] aos interfering with hover on resourcelisting
-* [ ] might be more useful to see the user who uploaded it, and maybe have the creator of the resource showing somewhere smaller
+* [ ] Protect edit resource in the backend (having trouble)
+* [X] might be more useful to see the user who uploaded it, and maybe have the creator of the resource showing somewhere smaller
 
 ▸ 📂 convex         # Backend queries, mutations, and schema definitions
 ▸ 📂 public         # Images, favicons, and other unprocessed assets

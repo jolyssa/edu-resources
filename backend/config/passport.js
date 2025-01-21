@@ -9,7 +9,7 @@ passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.NODE_ENV === 'production' 
-    ? "https://edu-resources-backend.onrender.com/auth/google/callback"
+    ? "https://stiff-hawk-mss-3cb42b3b.koyeb.app/auth/google/callback"
     : "http://localhost:5000/auth/google/callback"
 },
     async function (accessToken, refreshToken, profile, cb) {

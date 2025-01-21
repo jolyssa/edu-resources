@@ -8,7 +8,7 @@ router.get('/google',
   passport.authenticate('google', { 
     scope: ['profile', 'email'],
     callbackURL: process.env.NODE_ENV === 'production' 
-    ? "https://edu-resources-backend.onrender.com/auth/google/callback"
+    ? "https://stiff-hawk-mss-3cb42b3b.koyeb.app/auth/google/callback"
     : "http://localhost:5000/auth/google/callback",
   })
 )
@@ -18,7 +18,7 @@ router.get('/google',
 router.get('/google/callback', 
   passport.authenticate('google', { 
     callbackURL: process.env.NODE_ENV === 'production' 
-      ? "https://edu-resources-backend.onrender.com/auth/google/callback"
+      ? "https://stiff-hawk-mss-3cb42b3b.koyeb.app/auth/google/callback"
       : "http://localhost:5000/auth/google/callback",
     failureRedirect: `https://eduresources.site/login?success=false`,
     successRedirect: `https://eduresources.site?success=true`,
