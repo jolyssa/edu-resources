@@ -101,18 +101,6 @@ const Navbar = () => {
                     )}
                 </div>
             </div>
-
-            <div className="lg:mr-16 navbar-end" >
-                {
-                    user ? (
-                        <UserNav />
-                    ) : (
-                        <NavLink to="/login" className={signInClass}
-                        >
-                            Sign In
-                        </NavLink>
-                    )}
-            </div>
         </>
 
 
