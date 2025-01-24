@@ -6,10 +6,7 @@ const router = express.Router()
 // @route   GET /auth/google
 router.get('/google',
   passport.authenticate('google', { 
-    scope: ['profile', 'email'],
-    callbackURL: process.env.NODE_ENV === 'production' 
-    ? "https://eduserver.site/auth/google/callback"
-    : "http://localhost:5000/auth/google/callback",
+    scope: ['profile', 'email']
   })
 )
 
@@ -17,9 +14,6 @@ router.get('/google',
 // @route   GET /auth/google/callback
 router.get('/google/callback', 
   passport.authenticate('google', { 
-    callbackURL: process.env.NODE_ENV === 'production' 
-      ? "https://eduserver.site/auth/google/callback"
-      : "http://localhost:5000/auth/google/callback",
     failureRedirect: `https://eduresources.site/login?success=false`,
     successRedirect: `https://eduresources.site?success=true`,
   })
