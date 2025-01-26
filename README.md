@@ -11,8 +11,8 @@ Made for educators to share valuable coding tools, guides, and materials, and fo
 
 ## **Features**
 
-* **For Educators:** Share your educational tools, courses, tutorials, and materials with the learning community.
-* **For Learners:** Browse curated coding resources, including courses, guides, tutorials, and more to start or advance your coding journey.
+* **Discover & Learn:** Browse curated coding resources, including courses, guides, tutorials, and more to start or advance your coding journey.
+* **Share & Contribute:** Share your educational tools, courses, tutorials, and materials with the learning community.
 * **Resource Management**: Add, edit, and remove resources to keep the library up to date.
 * **Filter:** Easily search for resources based on type, skill level, and category.
 * **Users:** A profile with the ability to browse all of your own resources.
