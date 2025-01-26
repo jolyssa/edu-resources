@@ -46,7 +46,6 @@
 * [X] anims for certain elements
 * [ ] pagination for my resources (24 per page)
 * [X] pagination working with filter on resource page
-* [ ] MOVE MY CAR!!!
 * [ ] push items under line is resourcelisting to be on the bottom no matter what
 
 #### Hosting
@@ -55,6 +54,8 @@
 * [X] Change ALL links for localhost:4444
 * [X] Change .env in backend and frontend -> VITE_API_URL and VITE_BASE_URL and PORT (backend)
 * [X] Hosting backend separately or no ????? probably. YES
+* [X] Change servers, render too slow on free tier
+* [ ] Fix uri mismatch even though they are matched ??
 
 ### FUTURE UPDATES:
 
