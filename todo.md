@@ -50,12 +50,17 @@
 
 #### Hosting
 
-* [X] Change ALL links for localhost:5000
-* [X] Change ALL links for localhost:4444
-* [X] Change .env in backend and frontend -> VITE_API_URL and VITE_BASE_URL and PORT (backend)
-* [X] Hosting backend separately or no ????? probably. YES
-* [X] Change servers, render too slow on free tier
-* [ ] Fix uri mismatch even though they are matched ??
+Change ALL links for localhost:5000
+
+Change ALL links for localhost:4444
+
+Change .env in backend and frontend -> VITE_API_URL and VITE_BASE_URL and PORT (backend)
+
+Hosting backend separately or no ????? probably. YES
+
+Change servers, render too slow on free tier
+
+Fix uri mismatch even though they are matched ??
 
 ### FUTURE UPDATES:
 

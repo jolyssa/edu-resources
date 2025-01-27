@@ -33,7 +33,7 @@ const ResourceListing = ({ resources }) => {
 
             <div className="p-4">
                 <div className="mb-6">
-                    <h3 className="text-xl font-bold">{resources.title}</h3>
+                    <h3 className="text-xl font-bold mr-10">{resources.title}</h3>
                     <div className="text-gray-600 my-2">{resources.type}</div>
                 </div>
 

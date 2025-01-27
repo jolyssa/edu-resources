@@ -90,7 +90,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="lg:mr-16 navbar-end">
+                <div className="sm:mr-4 lg:mr-16 navbar-end">
                     {user ? (
                         <UserNav />
                     ) : (
