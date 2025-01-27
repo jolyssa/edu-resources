@@ -11,6 +11,7 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.NODE_ENV === 'production' 
     ? "https://eduserver.site/auth/google/callback"
     : "http://localhost:5000/auth/google/callback"
+
 },
     async function (accessToken, refreshToken, profile, cb) {
         console.log("Access Token:", accessToken)
