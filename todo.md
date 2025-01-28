@@ -50,37 +50,48 @@
 
 #### Hosting
 
-Change ALL links for localhost:5000
-
-Change ALL links for localhost:4444
-
-Change .env in backend and frontend -> VITE_API_URL and VITE_BASE_URL and PORT (backend)
-
-Hosting backend separately or no ????? probably. YES
-
-Change servers, render too slow on free tier
-
-Fix uri mismatch even though they are matched ??
+* [X] Change ALL links for localhost:5000
+* [X] Change ALL links for localhost:4444
+* [X] Change .env in backend and frontend -> VITE_API_URL and VITE_BASE_URL and PORT (backend)
+* [X] Hosting backend separately or no ????? probably. YES
+* [X] Change servers, render too slow on free tier
+* [X] Fix uri mismatch even though they are matched ??
 
 ### FUTURE UPDATES:
 
-* [ ] People can create lists (like GitHub w/ stars, create a list and add resources to a list)
-* [ ] make lists shareable
-* [ ] change categories to tags so you can select (on filter) multiple, and resources can have multiple categories
-* [ ] Resources can be public or private
+People can create lists (like GitHub w/ stars, create a list and add resources to a list)
+
+make lists shareable
+
+change categories to tags so you can select (on filter) multiple, and resources can have multiple categories
+
+Resources can be public or private
+
 * [X] fix filter to work with pagination
-* [ ] Profiles: click icon to view someone's public profile (will only show public resources and lists)
-* [ ] Add more resource types: Article,
-* [ ] Implement character limits on form for each category.
-* [ ] Add more categories: Documentation
-* [ ] Redirect loading back to homepage (rn its success = true), using AuthContext
-* [ ] read for duplicates, resource already exists something like that
-* [ ] Button to Add and Edit resource, rounded. MyResourcesPage -> Add First Resource button: make consistent with all the rest.
-* [ ] Local passport integration
-* [ ] Remove all console logs.
-* [ ] When deleting a resource, instead of taking you back to '/resources', it should take you back to where you were last browsing (eg. page 2, in the middle of the page is where you should be redirected to)
-* [ ] After adding a resource, when it redirects you to /resources, the filters should stay on until you reset them.
-* [ ] Add tags: free, or paid. tiers: `$, $$, $$$`
+
+Profiles: click icon to view someone's public profile (will only show public resources and lists)
+
+Add more resource types: Article,
+
+Implement character limits on form for each category.
+
+Add more categories: Documentation
+
+Redirect loading back to homepage (rn its success = true), using AuthContext
+
+read for duplicates, resource already exists something like that
+
+Button to Add and Edit resource, rounded. MyResourcesPage -> Add First Resource button: make consistent with all the rest.
+
+Local passport integration
+
+Remove all console logs.
+
+When deleting a resource, instead of taking you back to '/resources', it should take you back to where you were last browsing (eg. page 2, in the middle of the page is where you should be redirected to)
+
+After adding a resource, when it redirects you to /resources, the filters should stay on until you reset them.
+
+Add tags: free, or paid. tiers: `$, $$, $$$`
 
 ### ERRORS OR FUTURE FIXES
 

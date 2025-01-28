@@ -166,7 +166,6 @@ const resourceLoader = async ({ params }) => {
             throw new Error('Failed to fetch resource')
         }
         const data = await res.json()
-        console.log("Loaded resource data:", data) // Add this to debug
         return data
     } catch (error) {
         console.error('Error loading resource:', error)

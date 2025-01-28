@@ -39,7 +39,6 @@ const App = () => {
       }
 
       const data = await res.json();
-      console.log('Resource added:', data);
       return data
     } catch (error) {
       console.error('Error adding resource:', error);
